@@ -1,0 +1,60 @@
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\appsettings.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\Fitness Tracker.staticwebassets.runtime.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\Fitness Tracker.exe
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\Fitness Tracker.deps.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\Fitness Tracker.runtimeconfig.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\Fitness Tracker.dll
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\bin\Debug\net7.0\Fitness Tracker.pdb
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.AssemblyInfoInputs.cache
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.AssemblyInfo.cs
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.csproj.CoreCompileInputs.cache
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.RazorAssemblyInfo.cache
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.RazorAssemblyInfo.cs
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\staticwebassets\msbuild.Fitness Tracker.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\staticwebassets\msbuild.build.Fitness Tracker.props
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Fitness Tracker.props
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.Fitness Tracker.props
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\scopedcss\bundle\Fitness Tracker.styles.css
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\scopedcss\projectbundle\Fitness Tracker.bundle.scp.css
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.dll
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\refint\Fitness Tracker.dll
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.pdb
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\Fitness Tracker.genruntimeconfig.cache
+C:\Users\Ivo\Desktop\Sadge\Fitness Tracker\Fitness Tracker\Fitness Tracker\obj\Debug\net7.0\ref\Fitness Tracker.dll
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\appsettings.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\Fitness Tracker.staticwebassets.runtime.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\Fitness Tracker.exe
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\Fitness Tracker.deps.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\Fitness Tracker.runtimeconfig.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\Fitness Tracker.dll
+C:\Users\Ivo\Source\Repos\Fitness-tracker\bin\Debug\net7.0\Fitness Tracker.pdb
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.AssemblyInfoInputs.cache
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.AssemblyInfo.cs
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.csproj.CoreCompileInputs.cache
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.RazorAssemblyInfo.cache
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.RazorAssemblyInfo.cs
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\staticwebassets\msbuild.Fitness Tracker.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\staticwebassets\msbuild.build.Fitness Tracker.props
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Fitness Tracker.props
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.Fitness Tracker.props
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\scopedcss\bundle\Fitness Tracker.styles.css
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\scopedcss\projectbundle\Fitness Tracker.bundle.scp.css
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.dll
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\refint\Fitness Tracker.dll
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.pdb
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\Fitness Tracker.genruntimeconfig.cache
+C:\Users\Ivo\Source\Repos\Fitness-tracker\obj\Debug\net7.0\ref\Fitness Tracker.dll
