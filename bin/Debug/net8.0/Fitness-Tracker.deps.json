@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Fitness-Tracker/1.0.0": {
+        "dependencies": {
+          "CsvHelper": "30.0.1",
+          "HtmlAgilityPack": "1.11.54"
+        },
+        "runtime": {
+          "Fitness-Tracker.dll": {}
+        }
+      },
+      "CsvHelper/30.0.1": {
+        "runtime": {
+          "lib/net6.0/CsvHelper.dll": {
+            "assemblyVersion": "30.0.0.0",
+            "fileVersion": "30.0.1.0"
+          }
+        }
+      },
+      "HtmlAgilityPack/1.11.54": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.54.0",
+            "fileVersion": "1.11.54.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Fitness-Tracker/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CsvHelper/30.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rcZtgbWR+As4G3Vpgx0AMNmShGuQLFjkHAPIIflzrfkJCx8/AOd4m96ZRmiU1Wi39qS5UVjV0P8qdgqOo5Cwyg==",
+      "path": "csvhelper/30.0.1",
+      "hashPath": "csvhelper.30.0.1.nupkg.sha512"
+    },
+    "HtmlAgilityPack/1.11.54": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bgB79N4urc4D7hrD4R+Qk6CjPiYOfs6vfXNsmw3nCcfQEQvBQGjfAcl5k/tB1ZP1hA0d7xXs0jK8xAXV36IVUg==",
+      "path": "htmlagilitypack/1.11.54",
+      "hashPath": "htmlagilitypack.1.11.54.nupkg.sha512"
+    }
+  }
+}

@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QSPXOi3f4P1uqgTMeZOzDf7GWUx6TWnK690BsrlrSaj/6KPc3A1aL0eWJuOj2TXb25/+F0XOGnhmh/Gkn+h6YQ==",
+  "dgSpecHash": "50WbzJz/ox4R+txPz+H+J30D7RhyV5uuug9aefZrOolY4WI+Wko1tWyBOa//MrywtIp+43E6cTHd2h09KOhX9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ivo\\Desktop\\Sadge\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\User\\Desktop\\Fitness-tracker\\Fitness-Tracker\\Fitness-Tracker\\Fitness-Tracker.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\htmlagilitypack\\1.11.54\\htmlagilitypack.1.11.54.nupkg.sha512"
+  ],
   "logs": []
 }
