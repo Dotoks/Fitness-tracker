@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ivo\\Desktop\\Sadge\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker.csproj": {}
+    "C:\\Users\\Ivo\\source\\repos\\Fitness-tracker\\Fitness Tracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ivo\\Desktop\\Sadge\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker.csproj": {
+    "C:\\Users\\Ivo\\source\\repos\\Fitness-tracker\\Fitness Tracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ivo\\Desktop\\Sadge\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker.csproj",
+        "projectUniqueName": "C:\\Users\\Ivo\\source\\repos\\Fitness-tracker\\Fitness Tracker.csproj",
         "projectName": "Fitness Tracker",
-        "projectPath": "C:\\Users\\Ivo\\Desktop\\Sadge\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker.csproj",
+        "projectPath": "C:\\Users\\Ivo\\source\\repos\\Fitness-tracker\\Fitness Tracker.csproj",
         "packagesPath": "C:\\Users\\Ivo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ivo\\Desktop\\Sadge\\Fitness Tracker\\Fitness Tracker\\Fitness Tracker\\obj\\",
+        "outputPath": "C:\\Users\\Ivo\\source\\repos\\Fitness-tracker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ivo\\AppData\\Roaming\\NuGet\\NuGet.Config",

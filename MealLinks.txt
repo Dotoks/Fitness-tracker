@@ -174,6 +174,7 @@ https://www.allrecipes.com/recipe/240094/oregon-fall-salad/
 https://www.allrecipes.com/recipe/229063/classic-restaurant-caesar-salad/
 https://www.allrecipes.com/recipe/260452/greek-inspired-chicken-salad/
 https://www.allrecipes.com/recipe/253157/weeknight-skillet-slaw/
+https://www.allrecipes.com/french-apple-cake-recipe-7963451
 https://www.allrecipes.com/no-churn-blackberry-ice-cream-recipe-7852324
 https://www.allrecipes.com/pear-galette-with-ginger-recipe-7693661
 https://www.allrecipes.com/summer-fruit-icebox-cake-7642312
@@ -209,7 +210,7 @@ https://www.allrecipes.com/creme-patissiere-recipe-7486405
 https://www.allrecipes.com/baileys-cheesecake-recipe-7255780
 https://www.allrecipes.com/the-best-paleo-chocolate-cake-with-paleo-chocolate-frosting-recipe-7372948
 https://www.allrecipes.com/baked-churro-bites-recipe-7252818
-https://www.allrecipes.com/recipe/8542272/carrot-apple-cake-with-cream-cheese-frosting/
+https://www.allrecipes.com/copycat-chick-fil-a-frosted-lemonade-recipe-7550375
 https://www.allrecipes.com/agua-fresca-de-fresas-con-crema-strawberries-and-cream-recipe-7560919
 https://www.allrecipes.com/sparkling-mango-pineapple-sangria-recipe-7560880
 https://www.allrecipes.com/how-to-make-cold-foam-recipe-7507230
@@ -245,4 +246,3 @@ https://www.allrecipes.com/recipe/32352/best-strawberry-daiquiri/
 https://www.allrecipes.com/recipe/256748/lemon-drop-shots/
 https://www.allrecipes.com/recipe/221261/peanut-butter-banana-smoothie/
 https://www.allrecipes.com/recipe/17309/bahama-mama/
-https://www.allrecipes.com/recipe/20216/simple-syrup/
