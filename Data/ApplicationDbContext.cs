@@ -6,7 +6,7 @@ using Microsoft.VisualBasic.FileIO;
 
 namespace Fitness_Tracker.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -20,7 +20,10 @@ namespace Fitness_Tracker.Data
 
         public DbSet<Recipe> Recipes { get; set; }
 
-        
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
 
     }
 }
