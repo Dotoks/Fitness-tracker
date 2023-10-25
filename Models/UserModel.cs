@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Fitness_Tracker.Models
 {
-    public class User
+    public class User : IdentityUser
     {
+        //[Required]
+        //public int UserID { get; set; } // Primary Key                THIS IS NOT NEEDED BECAUSE IdentityUser ALREADY HAS ID
         [Required]
-        public int UserID { get; set; } // Primary Key
-
         public required string Username { get; set; }
 
         public required string Email { get; set; }

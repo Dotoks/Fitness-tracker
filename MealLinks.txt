@@ -38,7 +38,6 @@ https://www.allrecipes.com/recipe/35149/corn-dogs/
 https://www.allrecipes.com/recipe/231097/caldo-de-pollo/
 https://www.allrecipes.com/recipe/235589/chef-johns-creamy-mushroom-soup/
 https://www.allrecipes.com/recipe/13045/broccoli-cheese-soup/
-https://www.allrecipes.com/recipe/187342/banh-mi/
 https://www.allrecipes.com/recipe/73963/pasta-salad-with-homemade-dressing/
 https://www.allrecipes.com/recipe/130979/day-after-thanksgiving-turkey-carcass-soup/
 https://www.allrecipes.com/recipe/36621/philly-steak-sandwich/
@@ -70,6 +69,7 @@ https://www.allrecipes.com/recipe/229156/zesty-quinoa-salad/
 https://www.allrecipes.com/recipe/237732/top-ramen-salad/
 https://www.allrecipes.com/recipe/222659/tomato-mozzarella-salad/
 https://www.allrecipes.com/recipe/244231/hot-dog-mummies/
+https://www.allrecipes.com/recipe/234676/how-to-make-a-tuna-melt/
 https://www.allrecipes.com/air-fryer-waffle-egg-in-a-hole-7377995
 https://www.allrecipes.com/overnight-pineapple-banana-oatmeal-recipe-7376062
 https://www.allrecipes.com/recipe/284760/cinnamon-roll-monkey-bread/
@@ -210,6 +210,8 @@ https://www.allrecipes.com/creme-patissiere-recipe-7486405
 https://www.allrecipes.com/baileys-cheesecake-recipe-7255780
 https://www.allrecipes.com/the-best-paleo-chocolate-cake-with-paleo-chocolate-frosting-recipe-7372948
 https://www.allrecipes.com/baked-churro-bites-recipe-7252818
+https://www.allrecipes.com/gold-rush-recipe-7562213
+https://www.allrecipes.com/sparkling-peach-sangria-recipe-7559189
 https://www.allrecipes.com/copycat-chick-fil-a-frosted-lemonade-recipe-7550375
 https://www.allrecipes.com/agua-fresca-de-fresas-con-crema-strawberries-and-cream-recipe-7560919
 https://www.allrecipes.com/sparkling-mango-pineapple-sangria-recipe-7560880
@@ -244,5 +246,3 @@ https://www.allrecipes.com/recipe/221310/moscow-mule-cocktail/
 https://www.allrecipes.com/recipe/147363/the-real-mojito/
 https://www.allrecipes.com/recipe/32352/best-strawberry-daiquiri/
 https://www.allrecipes.com/recipe/256748/lemon-drop-shots/
-https://www.allrecipes.com/recipe/221261/peanut-butter-banana-smoothie/
-https://www.allrecipes.com/recipe/17309/bahama-mama/

@@ -20,7 +20,7 @@ namespace Fitness_Tracker.Data
 
         public DbSet<Recipe> Recipes { get; set; }
 
-        public DbSet<User> User { get; set; }
+        
 
     }
 }
