@@ -4,9 +4,24 @@
 
 <h2>@ViewData["Title"]</h2>
 
-@* <ul> *@
-@*     @foreach (var mealHref in ViewData["ScrapedMealHrefs"] as List<string>) *@
-@*     { *@
-@*         <li><a href="@mealHref">@mealHref</a></li> *@
-@*     } *@
-@* </ul> *@
+<ul>
+    @if (ViewData["ScrapedMealHrefs"] != null)
+    {
+        foreach (var mealHref in ViewData["ScrapedMealHrefs"] as List<string>)
+        {
+            <li><a href="@mealHref">@mealHref</a></li>
+        }
+    }
+</ul>
+
+
+<h3>Scraped rows in list of ingredients:</h3>
+<ul>
+    @if (ViewData["ScrapedData"] != null)
+    {
+        foreach (var scrapedInfo in ViewData["ScrapedData"] as List<string>)
+        {
+            <li>@scrapedInfo</li>
+        }
+    }
+</ul>

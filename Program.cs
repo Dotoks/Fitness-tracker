@@ -30,3 +30,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+
+//TODO: Finish with scraping the data for ingredients macros and recipes in the controller.
+//TODO:Set up authentication

@@ -6,14 +6,19 @@ namespace Fitness_Tracker.Models
 {
     public class Recipe
     {
+        [Key]
+        public int RecipeID { get; set; }
+
         [Required]
-        public int RecipeID { get; set; } // Primary Key
+        public string RecipeName { get; set; }
 
-        public required string RecipeName { get; set; }
+        [Required]
+        public string Description { get; set; }
 
-        public required string Description { get; set; }
+        [Required]
+        public string PreparationInstructions { get; set; }
 
-        public required string PreparationInstructions { get; set; }
+
 
         public int CookingTime { get; set; }
 
@@ -24,11 +29,11 @@ namespace Fitness_Tracker.Models
         public DateTime CreatedDate { get; set; }
 
         [Required]
-        [ForeignKey("UserId")]
+        
         public int CreatedBy { get; set; } // Foreign Key referencing UserID
-
+        [ForeignKey("CreatedBy")]
         public required User Creator { get; set; }
 
-        public List<Macro> Macros { get; set; } // Many-to-many relationship via the junction table
+        public ICollection<Macro> Macros { get; set; } // One-to-many relationship via the junction table
     }
 }

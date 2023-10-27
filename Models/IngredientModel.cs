@@ -6,12 +6,13 @@ namespace Fitness_Tracker.Models
     public class Ingredient
     {
         [Key]
-        public int IngredientID { get; set; } // Primary Key
+        public int IngredientID { get; set; }
 
-        public required string IngredientName { get; set; }
+        [Required]
+        public string IngredientName { get; set; }
 
-        public string? Category { get; set; }
+        public string Category { get; set; }
 
-        public required List<Macro> Macros { get; set; } // Many-to-many relationship via the junction table
+        public ICollection<Macro> Macros { get; set; } // One-to-many relationship
     }
 }
