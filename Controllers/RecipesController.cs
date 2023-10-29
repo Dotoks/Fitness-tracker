@@ -15,7 +15,8 @@ public class RecipesController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IRecipeRepository _recipeRepository;
-    private static bool isDataScraped = false;
+    private static bool areIngredientsScraped = false;
+
     public RecipesController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
     {
         _unitOfWork = unitOfWork;
@@ -26,44 +27,30 @@ public class RecipesController : Controller
     [HttpGet]
     public async Task<IActionResult> ScrapeData()
     {
-     
+        
         string filePath = "MealLinks.txt";
-        List<string> scrapedData = new List<string>();
         ScrapeAndSaveMealLinks(filePath);//scrapes the links for the meals
-
+        string filePathIngredients = "IngredientsScraped.txt";
 
         //this part of the code gets all the ingredient rows
-
-        List<string> mealLinks = new List<string>();
-        if (System.IO.File.Exists(filePath))
+        if (!System.IO.File.Exists(filePathIngredients))
         {
-            mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
-        }
-        for (int i = 0; i < mealLinks.Count; i++)
-        {
-            string link = mealLinks[i];
-            // Scrape data from the links using HtmlAgilityPack or any other HTML parsing library.
-            var scrapedInfo = await ScrapeIngredientsAsync(link);
-
-            foreach (var row in scrapedInfo)
+            List<string> mealLinks = new List<string>();
+            if (System.IO.File.Exists(filePath))
             {
-                scrapedData.Add(row);
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
             }
-            scrapedData.Add("--------------------------------------------------");
-            
 
-            if (i >= 5)
+            for (int i = 0; i < mealLinks.Count; i++)
             {
-                break;
+                string link = mealLinks[i];
+                var scrapedInfo = await ScrapeIngredientsAsync(link);
             }
-            // Extract recipe name, description, ingredients, macros, etc.
-
-            // Create instances of your model classes (Recipe, Ingredient, Macro) and populate their properties.
-
-            // Save the scraped data to your database or data structures.
+            System.IO.File.Create(filePathIngredients);
         }
-        ViewData["ScrapedData"] = scrapedData;
+
         return View();
+
     }
 
 
@@ -77,22 +64,19 @@ public class RecipesController : Controller
 
     //Helper methods for scraping
 
-    private async Task<List<string>> ScrapeIngredientsAsync(string url)//you pass every single link with recipe
+    private async Task<List<string>> ScrapeIngredientsAsync(string url)
     {
         HtmlWeb web = new HtmlWeb();
         web.OverrideEncoding = Encoding.UTF8;
         HtmlDocument doc = await web.LoadFromWebAsync(url);
 
-
-        // Define the XPath to select the <ul> element that contains the ingredients.
         string ingredientsXPath = "//*[@id='mntl-structured-ingredients_1-0']/ul";
         HtmlNode ingredientList = doc.DocumentNode.SelectSingleNode(ingredientsXPath);
         List<string> ingredients = new List<string>();
-
+        HashSet<string> uniqueIngredients = new HashSet<string>();
 
         if (ingredientList != null)
         {
-            // Extract the individual <li> elements within the <ul> for ingredients.
             var ingredientNodes = ingredientList.SelectNodes("li");
 
             if (ingredientNodes != null)
@@ -105,32 +89,35 @@ public class RecipesController : Controller
                     string[] parts = ingredientNode.Descendants("span")
                         .Select(span => span.InnerText.Trim())
                         .ToArray();
-
-
+                    if (parts.Length < 2)
+                    {
+                        continue; // Skip this ingredient and move to the next one.
+                    }
                     string quantity = parts[0];
                     string unit = parts[1];
                     string ingredientName = string.Join(" ", parts.Skip(2));
 
-                    // Create or update the Ingredient entity in the database
-                    Ingredient ingredient = new Ingredient
+                    // Check if the ingredient name is unique
+                    if (uniqueIngredients.Add(ingredientName))
                     {
-                       Quantity = quantity,
-                        Unit  = unit,
-                        IngredientName = ingredientName
-                    };
-                   
+                        // Create and add the Ingredient entity to the database
+                        Ingredient ingredient = new Ingredient
+                        {
+                            Quantity = quantity,
+                            Unit = unit,
+                            IngredientName = ingredientName
+                        };
+
                         _unitOfWork.Ingredient.Add(ingredient);
-                       
-                        await _unitOfWork.SaveAsync();
-                    
+                    }
                 }
 
-               
+                // Save all unique ingredients to the database in a single transaction
+                await _unitOfWork.SaveAsync();
             }
         }
 
         return ingredients;
-
     }
 
     private void ScrapeAndSaveMealLinks(string filePath)
@@ -283,17 +270,3 @@ public class RecipesController : Controller
         }
     }
 }
-
-
-
-
-
-
-//[HttpGet]
-//public IActionResult Index(List<Products> productsList)//be careful with using the real models. Maybe try using dto's!!!
-// {//here you should have form that the user fills with products. The scraper scrapes all the recipes and outputs them under  the form .
-        
-        
-        
-//   return View();//View for main page in RecipesController
-// }

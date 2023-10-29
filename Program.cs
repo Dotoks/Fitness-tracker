@@ -11,6 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,5 +37,7 @@ app.Run();
 
 
 
-//TODO: Finish with scraping the data for ingredients macros and recipes in the controller.
+
+
+//TODO: Finish with scraping the data for macros and recipes in the controller.
 //TODO:Set up authentication
