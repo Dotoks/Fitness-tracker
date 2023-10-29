@@ -32,8 +32,7 @@ header nav ul li {
     font-family:'Inter', sans-serif;;
 
 }
-
-/* Header menu styling */
+/* Header navigtion*/
 header nav ul li a {
     text-decoration: none;
     color: #fff; 
@@ -45,7 +44,6 @@ header nav ul li a {
 
 }
 
-/* Hover effect for the menu */
 header nav ul li a:hover {
     background-color: #ffffff; 
     color: #9086FF; 
@@ -54,15 +52,14 @@ header nav ul li a:hover {
 body {
     background-color: #9086FF;
 }
-/* ... (rest of the CSS remains unchanged) ... */
 
 .buttons {
+    position: relative;      
     margin-top: 20px;
-    position: relative;      /* To position the slider inside this div */
-    width: 300px;            /* Example fixed width for buttons div, adjust as needed */
+    width: 300px;           
     margin: 20px auto;  
     text-align: center;
-    position: relative;    /* New - so that the slider's absolute positioning refers to this div */
+    position: relative;   
     height: 50px;  
     margin-left: auto;        
     margin-right: auto;      
@@ -86,15 +83,27 @@ button:hover {
 }
 
 .slider {
-    background-color: #ad0000;  /* Example background color for the slider */
-    height: 50px;            /* Fixed height matching the height of buttons */
-    width: 50%;              /* 50% of the fixed width of the buttons div */
-    position: absolute;      /* Positioning it inside the buttons div */
-    top: 0;                  /* Aligning to the top */
-    left: 0;                 /* Starting from the left */
-    z-index: 1;              /* Layering it on top */
-    transition: 0.5s;      /* New - smooth transition */
+    background-color: #9086FF;  
+    height: 50px;          
+    width: 50%;            
+    position: absolute;    
+    top: 0;                
+    left: 0;                 
+    z-index: 1;           
+    transition: 0.5s;
+    opacity: 0.5;      
 }
 .slider-move {
-    left: 50%;  /* Moves the slider to cover the second half of the buttons div */
+    left: 50%; 
+}
+.form-container {
+    display: flex;           /* Horizontal arrangement of the forms */
+    width: 100%;             /* Set to container width */
+    overflow: hidden;        /* Hide the form that's out of view */
+    transition: 0.5s;        /* Smooth transition */
+}
+
+.form {
+    flex: 0 0 100%;          /* Take up 100% of the form-container's width but don't grow/shrink */
+    transition: 0.5s;        /* Smooth transition for any movement */
 }
