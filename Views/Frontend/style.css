@@ -50,3 +50,51 @@ header nav ul li a:hover {
     background-color: #ffffff; 
     color: #9086FF; 
 }
+
+body {
+    background-color: #9086FF;
+}
+/* ... (rest of the CSS remains unchanged) ... */
+
+.buttons {
+    margin-top: 20px;
+    position: relative;      /* To position the slider inside this div */
+    width: 300px;            /* Example fixed width for buttons div, adjust as needed */
+    margin: 20px auto;  
+    text-align: center;
+    position: relative;    /* New - so that the slider's absolute positioning refers to this div */
+    height: 50px;  
+    margin-left: auto;        
+    margin-right: auto;      
+    display: flex;           
+    justify-content: center; 
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    height: 40px; 
+    cursor: pointer;
+    border: none;            
+    outline: none;           
+    background-color: #bfa2f2; 
+    color: white;           
+}
+
+button:hover {
+    background-color: #ae89ee; 
+}
+
+.slider {
+    background-color: #ad0000;  /* Example background color for the slider */
+    height: 50px;            /* Fixed height matching the height of buttons */
+    width: 50%;              /* 50% of the fixed width of the buttons div */
+    position: absolute;      /* Positioning it inside the buttons div */
+    top: 0;                  /* Aligning to the top */
+    left: 0;                 /* Starting from the left */
+    z-index: 1;              /* Layering it on top */
+    transition: 0.5s;      /* New - smooth transition */
+}
+.slider-move {
+    left: 50%;  /* Moves the slider to cover the second half of the buttons div */
+}
