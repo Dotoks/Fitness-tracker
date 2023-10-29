@@ -9,7 +9,7 @@ namespace Fitness_Tracker.Models
         [Key]
         public int MacroID { get; set; }
 
-        public decimal Quantity { get; set; }
+        
         public decimal Calories { get; set; }
         public decimal Carbohydrates { get; set; }
         public decimal Proteins { get; set; }

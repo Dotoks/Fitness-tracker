@@ -7,11 +7,12 @@ namespace Fitness_Tracker.Models
     {
         [Key]
         public int IngredientID { get; set; }
-
+        [Required]
+        public string Quantity { get; set; }
         [Required]
         public string IngredientName { get; set; }
-
-        public string Category { get; set; }
+        [Required]
+        public string Unit { get; set; }
 
         public ICollection<Macro> Macros { get; set; } // One-to-many relationship
     }

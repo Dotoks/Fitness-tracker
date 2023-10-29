@@ -2,8 +2,10 @@
 using System.Net;
 using System.Text;
 using CsvHelper;
+using Fitness_Tracker.Data;
 using Fitness_Tracker.HelperClassesForScraping;
 using Fitness_Tracker.Models;
+using Fitness_Tracker.Repository.IRepository;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,19 +13,128 @@ namespace Fitness_Tracker.Controllers;
 
 public class RecipesController : Controller
 {
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IRecipeRepository _recipeRepository;
     private static bool isDataScraped = false;
-    public RecipesController()
+    public RecipesController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
     {
-        
+        _unitOfWork = unitOfWork;
+        _recipeRepository = recipeRepository;
     }
     
 
     [HttpGet]
-    public IActionResult ScrapeData()
+    public async Task<IActionResult> ScrapeData()
     {
-        int cnt = 0;
+     
         string filePath = "MealLinks.txt";
         List<string> scrapedData = new List<string>();
+        ScrapeAndSaveMealLinks(filePath);//scrapes the links for the meals
+
+
+        //this part of the code gets all the ingredient rows
+
+        List<string> mealLinks = new List<string>();
+        if (System.IO.File.Exists(filePath))
+        {
+            mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+        }
+        for (int i = 0; i < mealLinks.Count; i++)
+        {
+            string link = mealLinks[i];
+            // Scrape data from the links using HtmlAgilityPack or any other HTML parsing library.
+            var scrapedInfo = await ScrapeIngredientsAsync(link);
+
+            foreach (var row in scrapedInfo)
+            {
+                scrapedData.Add(row);
+            }
+            scrapedData.Add("--------------------------------------------------");
+            
+
+            if (i >= 5)
+            {
+                break;
+            }
+            // Extract recipe name, description, ingredients, macros, etc.
+
+            // Create instances of your model classes (Recipe, Ingredient, Macro) and populate their properties.
+
+            // Save the scraped data to your database or data structures.
+        }
+        ViewData["ScrapedData"] = scrapedData;
+        return View();
+    }
+
+
+
+
+
+
+
+
+
+
+    //Helper methods for scraping
+
+    private async Task<List<string>> ScrapeIngredientsAsync(string url)//you pass every single link with recipe
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+
+
+        // Define the XPath to select the <ul> element that contains the ingredients.
+        string ingredientsXPath = "//*[@id='mntl-structured-ingredients_1-0']/ul";
+        HtmlNode ingredientList = doc.DocumentNode.SelectSingleNode(ingredientsXPath);
+        List<string> ingredients = new List<string>();
+
+
+        if (ingredientList != null)
+        {
+            // Extract the individual <li> elements within the <ul> for ingredients.
+            var ingredientNodes = ingredientList.SelectNodes("li");
+
+            if (ingredientNodes != null)
+            {
+                foreach (var ingredientNode in ingredientNodes)
+                {
+                    // Extract the ingredient text and add it to your model.
+                    string ingredientText = ingredientNode.InnerText.Trim();
+                    ingredients.Add(ingredientText);
+                    string[] parts = ingredientNode.Descendants("span")
+                        .Select(span => span.InnerText.Trim())
+                        .ToArray();
+
+
+                    string quantity = parts[0];
+                    string unit = parts[1];
+                    string ingredientName = string.Join(" ", parts.Skip(2));
+
+                    // Create or update the Ingredient entity in the database
+                    Ingredient ingredient = new Ingredient
+                    {
+                       Quantity = quantity,
+                        Unit  = unit,
+                        IngredientName = ingredientName
+                    };
+                   
+                        _unitOfWork.Ingredient.Add(ingredient);
+                       
+                        await _unitOfWork.SaveAsync();
+                    
+                }
+
+               
+            }
+        }
+
+        return ingredients;
+
+    }
+
+    private void ScrapeAndSaveMealLinks(string filePath)
+    {
         if (!System.IO.File.Exists(filePath) || new System.IO.FileInfo(filePath).Length == 0)
         {
             // Specify the URLs you want to scrape.
@@ -159,15 +270,8 @@ public class RecipesController : Controller
                         }
                     }
 
-                    //  Write both dinner and lunch links to the same text file.
+                    // Write both dinner and lunch links to the same text file.
                     System.IO.File.WriteAllLines("MealLinks.txt", mealHrefs);
-
-                    // Store the scraped meal hrefs in ViewData for display in the view.
-                    ViewData["ScrapedMealHrefs"] = mealHrefs;
-                }
-                else
-                {
-                    ViewData["ScrapedMealHrefs"] = new List<string>(); // Initialize as an empty list.
                 }
             }
         }
@@ -177,87 +281,7 @@ public class RecipesController : Controller
             var mealHrefsFromFile = System.IO.File.ReadAllLines(filePath).ToList();
             ViewData["ScrapedMealHrefs"] = mealHrefsFromFile;
         }
-
-
-        //this part of the code gets all the ingredient rows
-    
-        List<string> mealLinks = new List<string>();
-        if (System.IO.File.Exists(filePath))
-        {
-            mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
-        }
-        foreach (string link in mealLinks)
-        {
-            // Scrape data from the links using HtmlAgilityPack or any other HTML parsing library.
-            var scrapedInfo = ScrapeIngredients(link);
-           
-            foreach (var row in scrapedInfo)
-            {
-                scrapedData.Add(row);
-                
-               
-            }
-            scrapedData.Add("--------------------------------------------------");
-            cnt++;
-            
-            if (cnt >= 5)
-            {
-                break;
-            }
-            // Extract recipe name, description, ingredients, macros, etc.
-
-            // Create instances of your model classes (Recipe, Ingredient, Macro) and populate their properties.
-
-            // Save the scraped data to your database or data structures.
-        }
-        ViewData["ScrapedData"] = scrapedData;
-        return View();
     }
-
-
-
-
-    private List<string> ScrapeIngredients(string url)//you pass every single link with recipe
-    {
-        HtmlWeb web = new HtmlWeb();
-        web.OverrideEncoding = Encoding.UTF8;
-        HtmlDocument doc = web.Load(url);
-
-
-        // Define the XPath to select the <ul> element that contains the ingredients.
-        string ingredientsXPath = "//*[@id='mntl-structured-ingredients_1-0']/ul"; 
-
-        HtmlNode ingredientList = doc.DocumentNode.SelectSingleNode(ingredientsXPath);
-        List<string> ingredients = new List<string>();
-        if (ingredientList != null)
-        {
-            // Extract the individual <li> elements within the <ul> for ingredients.
-            var ingredientNodes = ingredientList.SelectNodes("li");
-
-            if (ingredientNodes != null)
-            {
-                foreach (var ingredientNode in ingredientNodes)
-                {
-                    // Extract the ingredient text and add it to your model.
-                    string ingredientText = ingredientNode.InnerText.Trim();
-                    ingredients.Add(ingredientText);
-
-                    // You may need to further process ingredientText to separate ingredient name and quantity.
-
-                    // Add the ingredient information to your model.
-                    // For example:
-                    // ingredient.IngredientName = extractedIngredientName;
-                    // ingredient.Quantity = extractedIngredientQuantity;
-                }
-
-               
-            }
-        }
-
-        return ingredients;
-
-    }
-
 }
 
 

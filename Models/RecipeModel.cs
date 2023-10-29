@@ -30,7 +30,7 @@ namespace Fitness_Tracker.Models
 
         [Required]
         
-        public int CreatedBy { get; set; } // Foreign Key referencing UserID
+        public string CreatedBy { get; set; } // Foreign Key referencing UserID
         [ForeignKey("CreatedBy")]
         public required User Creator { get; set; }
 
