@@ -11,28 +11,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fitness_Tracker.Controllers;
 
-public class RecipesScraperController : Controller
+public class RecipeScraperController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IRecipeRepository _recipeRepository;
     private static bool areIngredientsScraped = false;
 
-    public RecipesScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
+    public RecipeScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
     {
         _unitOfWork = unitOfWork;
         _recipeRepository = recipeRepository;
     }
-    
+
 
     [HttpGet]
     public async Task<IActionResult> ScrapeData()
     {
-        
         string filePath = "MealLinks.txt";
-        ScrapeAndSaveMealLinks(filePath);//scrapes the links for the meals
+        ScrapeAndSaveMealLinks(filePath); // scrapes the links for the meals
         string filePathIngredients = "IngredientsScraped.txt";
 
-        //this part of the code gets all the ingredient rows
+        // Accumulate scraped instructions in a list
+        List<string> allScrapedInstructions = new List<string>();
+
+        // This part of the code gets all the ingredient rows
         if (!System.IO.File.Exists(filePathIngredients))
         {
             List<string> mealLinks = new List<string>();
@@ -45,12 +47,43 @@ public class RecipesScraperController : Controller
             {
                 string link = mealLinks[i];
                 var scrapedInfo = await ScrapeIngredientsAsync(link);
+
             }
+
+            // Store all scraped instructions in ViewData after the loop
+            ViewData["ScrapedInstructions"] = allScrapedInstructions;
+
             System.IO.File.Create(filePathIngredients);
+        }
+        List<string> mealLinks2 = new List<string>();
+        if (System.IO.File.Exists(filePath))
+        {
+            mealLinks2 = System.IO.File.ReadAllLines(filePath).ToList();
+        }
+        for (int i = 0; i < mealLinks2.Count; i++)
+        {
+            string link = mealLinks2[i];
+            var scrapedInstructions = await ScrapeInstructionsAsync(link);
+
+            if (i < 3)
+            {
+
+                foreach (var scrapedInstruction in scrapedInstructions)
+                {
+                    allScrapedInstructions.Add(scrapedInstruction); // Accumulate instructions
+
+                }
+            }
+            if (i > 3) break;
+
+
+        }
+        foreach (var item in allScrapedInstructions)
+        {
+            await Console.Out.WriteLineAsync(item);
         }
 
         return View();
-
     }
 
 
@@ -59,10 +92,47 @@ public class RecipesScraperController : Controller
 
 
 
-
-
-
     //Helper methods for scraping
+
+
+    private async Task<List<string>> ScrapeInstructionsAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+
+        string instructionsXPath = "//*[@id=\"mntl-sc-block_2-0\"]";//ol element for steps
+
+        var instructionList = doc.DocumentNode.SelectSingleNode(instructionsXPath);
+        List<string> steps = new List<string>();
+        if (instructionList != null)
+        {
+            var instructionNodes = instructionList.SelectNodes("li");//the mistake might be here
+
+            if (instructionNodes != null)
+            {
+                foreach (var instructionNode in instructionNodes)
+                {
+                    // Extract only the <p> elements with a specific class (e.g., "comp mntl-sc-block mntl-sc-block-html")
+                    var pElements = instructionNode.Descendants("p")
+                        .Where(p => p.GetAttributeValue("class", "").Contains("comp mntl-sc-block mntl-sc-block-html"))
+                        .ToList();
+
+                    foreach (var pElement in pElements)
+                    {
+                        string instructionText = pElement.InnerText.Trim();
+                        steps.Add(instructionText);
+                    }
+                }//almost ready
+
+
+            }
+        }
+
+        return steps;
+
+
+    }
 
     private async Task<List<string>> ScrapeIngredientsAsync(string url)
     {
@@ -270,3 +340,32 @@ public class RecipesScraperController : Controller
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//private async Task<List<string>> ScrapeInstructionsAsync(string url)
+//{
+//    HtmlWeb web = new HtmlWeb();
+//    web.OverrideEncoding = Encoding.UTF8;
+//    HtmlDocument doc = await web.LoadFromWebAsync(url);
+//    var testList = new List<string>();
+//    var stepsDiv = doc.DocumentNode.Descendants("div").FirstOrDefault(n => n.Id.Equals("recipe__steps_1-0"));
+//    //check if null
+//    if (stepsDiv == null)
+//    {
+//        throw new NullReferenceException("stepsDiv is null.");
+//    }
+//    // var str = "asd";
+//    // testList.Add(str);
+
+//    return testList;
+//}

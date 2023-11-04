@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     ViewData["Title"] = "Scraped Meals";
 }
 
@@ -24,4 +24,28 @@
             <li>@scrapedInfo</li>
         }
     }
-</ul> *@
+</ul>
+
+*@
+
+
+
+@{
+    var scrapedInstructions = ViewData["ScrapedInstructions"] as List<string>;
+}
+
+<h1>Scraped Instructions</h1>
+
+@if (scrapedInstructions != null && scrapedInstructions.Count > 0)
+{
+    <ul>
+        @foreach (var instruction in scrapedInstructions)
+        {
+            <li>@instruction</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No instructions available.</p>
+}
