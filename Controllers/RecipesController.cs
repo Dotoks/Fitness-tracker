@@ -123,7 +123,7 @@ public class RecipesController : Controller
                         string instructionText = pElement.InnerText.Trim();
                         steps.Add(instructionText);
                     }
-                }
+                }//almost ready
 
 
             }
