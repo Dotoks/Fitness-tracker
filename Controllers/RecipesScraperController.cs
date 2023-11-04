@@ -47,7 +47,7 @@ public class RecipeScraperController : Controller
             {
                 string link = mealLinks[i];
                 var scrapedInfo = await ScrapeIngredientsAsync(link);
-                
+
             }
 
             // Store all scraped instructions in ViewData after the loop
@@ -75,7 +75,7 @@ public class RecipeScraperController : Controller
                 }
             }
             if (i > 3) break;
-           
+
 
         }
         foreach (var item in allScrapedInstructions)
@@ -139,7 +139,7 @@ public class RecipeScraperController : Controller
         HtmlWeb web = new HtmlWeb();
         web.OverrideEncoding = Encoding.UTF8;
         HtmlDocument doc = await web.LoadFromWebAsync(url);
-        
+
         string ingredientsXPath = "//*[@id='mntl-structured-ingredients_1-0']/ul";
         HtmlNode ingredientList = doc.DocumentNode.SelectSingleNode(ingredientsXPath);
         List<string> ingredients = new List<string>();
