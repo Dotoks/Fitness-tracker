@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oUu/6qUqEwJ3Oxoe4FlnQpEsoqYxRd7t0zbDSRmS0QgRpmAv0JWRMlUdvzkszGbZ2Wr6A3P5hYqRKgboT8+2GQ==",
+  "dgSpecHash": "GiOdDUmJZLz1nKF4Tv3anKbZTz6redFdOLZkraXiJx4ZmLeTSleU9CQ3/6OsTsmXzFO/32yj9DQTc8GkrNdIZw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SZP\\Desktop\\All my projects\\Fitness-Tracker test proj\\Fitness-tracker\\Fitness-Tracker.csproj",
+  "projectFilePath": "C:\\Users\\SZP\\Desktop\\Fitness tracker 2 November\\Fitness-tracker\\Fitness-Tracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SZP\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\SZP\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

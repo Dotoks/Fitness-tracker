@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SZP\\Desktop\\All my projects\\Fitness-Tracker test proj\\Fitness-tracker\\Fitness-Tracker.csproj": {}
+    "C:\\Users\\SZP\\Desktop\\Fitness tracker 2 November\\Fitness-tracker\\Fitness-Tracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SZP\\Desktop\\All my projects\\Fitness-Tracker test proj\\Fitness-tracker\\Fitness-Tracker.csproj": {
+    "C:\\Users\\SZP\\Desktop\\Fitness tracker 2 November\\Fitness-tracker\\Fitness-Tracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SZP\\Desktop\\All my projects\\Fitness-Tracker test proj\\Fitness-tracker\\Fitness-Tracker.csproj",
+        "projectUniqueName": "C:\\Users\\SZP\\Desktop\\Fitness tracker 2 November\\Fitness-tracker\\Fitness-Tracker.csproj",
         "projectName": "Fitness-Tracker",
-        "projectPath": "C:\\Users\\SZP\\Desktop\\All my projects\\Fitness-Tracker test proj\\Fitness-tracker\\Fitness-Tracker.csproj",
+        "projectPath": "C:\\Users\\SZP\\Desktop\\Fitness tracker 2 November\\Fitness-tracker\\Fitness-Tracker.csproj",
         "packagesPath": "C:\\Users\\SZP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SZP\\Desktop\\All my projects\\Fitness-Tracker test proj\\Fitness-tracker\\obj\\",
+        "outputPath": "C:\\Users\\SZP\\Desktop\\Fitness tracker 2 November\\Fitness-tracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
