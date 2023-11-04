@@ -32,7 +32,7 @@ namespace Fitness_Tracker.Models
         
         public string CreatedBy { get; set; } // Foreign Key referencing UserID
         [ForeignKey("CreatedBy")]
-        public required User Creator { get; set; }
+        public User Creator { get; set; }
 
         public ICollection<Macro> Macros { get; set; } // One-to-many relationship via the junction table
     }

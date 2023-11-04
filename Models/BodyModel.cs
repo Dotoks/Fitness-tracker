@@ -10,7 +10,12 @@ namespace Fitness_Tracker.Models
         public int BodyID { get; set; } // Primary Key
         [ForeignKey("UserId")] // This creates the Foreign Key for the USer table
 
-        public DateTime DateMeasurment { get; set; }
+        // This table will be SCD 2
+        public DateTime EffectiveFromDate { get; set; }
+
+        public DateTime EffectiveThroughDate { get; set; }
+
+        public bool CurrentRecordIndicator { get; set; }
 
         public decimal Weight { get; set; }
 
