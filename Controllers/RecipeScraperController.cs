@@ -11,13 +11,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fitness_Tracker.Controllers;
 
-public class RecipesController : Controller
+public class RecipeScraperController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IRecipeRepository _recipeRepository;
     private static bool areIngredientsScraped = false;
 
-    public RecipesController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
+    public RecipeScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
     {
         _unitOfWork = unitOfWork;
         _recipeRepository = recipeRepository;
