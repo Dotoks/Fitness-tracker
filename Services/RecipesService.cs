@@ -23,7 +23,7 @@ namespace Fitness_Tracker.Services
             {
                 RecipeName = input.RecipeName,
                 Description = input.Description,
-                PreparationInstructions = input.PreparationInstructions,
+             //   PreparationInstructions = input.PreparationInstructions,
                 CookingTime = input.CookingTime,
                 Servings = input.Servings,
                 DifficultyLevel = input.DifficultyLevel,

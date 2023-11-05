@@ -11,13 +11,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fitness_Tracker.Controllers;
 
-public class RecipeScraperController : Controller
+public class RecipesScraperController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IRecipeRepository _recipeRepository;
     private static bool areIngredientsScraped = false;
 
-    public RecipeScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
+    public RecipesScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository)
     {
         _unitOfWork = unitOfWork;
         _recipeRepository = recipeRepository;
@@ -30,14 +30,14 @@ public class RecipeScraperController : Controller
         string filePath = "MealLinks.txt";
         ScrapeAndSaveMealLinks(filePath); // scrapes the links for the meals
         string filePathIngredients = "IngredientsScraped.txt";
-
+        List<string> mealLinks = new List<string>();
         // Accumulate scraped instructions in a list
         List<string> allScrapedInstructions = new List<string>();
 
         // This part of the code gets all the ingredient rows
         if (!System.IO.File.Exists(filePathIngredients))
         {
-            List<string> mealLinks = new List<string>();
+            
             if (System.IO.File.Exists(filePath))
             {
                 mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
@@ -49,41 +49,34 @@ public class RecipeScraperController : Controller
                 var scrapedInfo = await ScrapeIngredientsAsync(link);
 
             }
-
-            // Store all scraped instructions in ViewData after the loop
-            ViewData["ScrapedInstructions"] = allScrapedInstructions;
-
             System.IO.File.Create(filePathIngredients);
         }
-        List<string> mealLinks2 = new List<string>();
+        
         if (System.IO.File.Exists(filePath))
         {
-            mealLinks2 = System.IO.File.ReadAllLines(filePath).ToList();
+            mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
         }
-        for (int i = 0; i < mealLinks2.Count; i++)
+        for (int i = 0; i < mealLinks.Count; i++)
         {
-            string link = mealLinks2[i];
+            string link = mealLinks[i];
             var scrapedInstructions = await ScrapeInstructionsAsync(link);
-
-            if (i < 3)
-            {
-
                 foreach (var scrapedInstruction in scrapedInstructions)
                 {
                     allScrapedInstructions.Add(scrapedInstruction); // Accumulate instructions
+                    //TODO: seed database with the instructions (I have to create new recipe entities and then I will be able to do that)
 
                 }
-            }
-            if (i > 3) break;
+            
+            
 
 
         }
-        foreach (var item in allScrapedInstructions)
-        {
-            await Console.Out.WriteLineAsync(item);
-        }
+        //foreach (var item in allScrapedInstructions)
+        //{
+        //    await Console.Out.WriteLineAsync(item);
+        //}
 
-        return View();
+        return View("ScrapeData");
     }
 
 

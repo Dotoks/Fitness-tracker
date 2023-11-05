@@ -16,7 +16,7 @@ namespace Fitness_Tracker.Models
         public string Description { get; set; }
 
         [Required]
-        public string PreparationInstructions { get; set; }
+        public ICollection<Instructions> PreparationInstructions { get; set; }
 
 
 
