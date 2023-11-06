@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Fitness_Tracker.Models
 {
-    public class Ingredient
+    public class Ingredient //SCRAPED
     {
         [Key]
         public int IngredientID { get; set; }

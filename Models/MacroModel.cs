@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fitness_Tracker.Models
 {
-    public class Macro
+    public class Macro//TODO
     {
         [Key]
         public int MacroID { get; set; }

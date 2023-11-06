@@ -10,13 +10,13 @@ namespace Fitness_Tracker.Models
         public int RecipeID { get; set; }
 
         [Required]
-        public string RecipeName { get; set; }
+        public string RecipeName { get; set; }//todo
 
         [Required]
-        public string Description { get; set; }
+        public string Description { get; set; }//todo
 
         [Required]
-        public ICollection<Instructions> PreparationInstructions { get; set; }
+        public ICollection<Instructions> PreparationInstructions { get; set; }//done
 
 
 

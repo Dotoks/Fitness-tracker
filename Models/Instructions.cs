@@ -2,7 +2,7 @@
 
 namespace Fitness_Tracker.Models
 {
-    public class Instructions
+    public class Instructions//SCRAPED
     {
         public int id { get; set; }
         public string InstructionName { get; set; }

@@ -34,6 +34,63 @@ public class RecipesScraperController : Controller
         // Accumulate scraped instructions in a list
         List<string> allScrapedInstructions = new List<string>();
 
+        //This part scrapes the name of the meal (remove new lines)
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedName = await ScrapeNameAsync(link);
+
+                Console.WriteLine(scrapedName);
+
+
+                if (i > 2) break;
+
+            }
+        }
+
+        //This part scrapes the description of a recipe (check if it works)
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedDesc = await ScrapeDescriptionAsync(link);
+
+                Console.WriteLine(scrapedDesc);
+
+
+                if (i > 2) break;
+
+            }
+        }
+        //This part scrapes the cooking time
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedCookingTime = await ScrapeCookingTimeAsync(link);
+
+                Console.WriteLine(scrapedCookingTime);
+
+
+                if (i > 2) break;
+
+            }
+        }
+
+
         // This part of the code gets all the ingredient rows
         if (!System.IO.File.Exists(filePathIngredients))
         {
@@ -51,30 +108,32 @@ public class RecipesScraperController : Controller
             }
             System.IO.File.Create(filePathIngredients);
         }
-        
-        if (System.IO.File.Exists(filePath))
+        //This part scrapes the instructions 
         {
-            mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
-        }
-        for (int i = 0; i < mealLinks.Count; i++)
-        {
-            string link = mealLinks[i];
-            var scrapedInstructions = await ScrapeInstructionsAsync(link);
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedInstructions = await ScrapeInstructionsAsync(link);
                 foreach (var scrapedInstruction in scrapedInstructions)
                 {
                     allScrapedInstructions.Add(scrapedInstruction); // Accumulate instructions
-                    //TODO: seed database with the instructions (I have to create new recipe entities and then I will be able to do that)
+                    //TODO: seed database with the instructions (I have to create new recipe entities and then I will be able to do that
+                    //)
 
                 }
-            
-            
+                if (i > 2) break;
 
-
+            }
+           //foreach (var item in allScrapedInstructions)
+           //{
+           //    await Console.Out.WriteLineAsync(item);
+           //}
         }
-        //foreach (var item in allScrapedInstructions)
-        //{
-        //    await Console.Out.WriteLineAsync(item);
-        //}
+
 
         return View("ScrapeData");
     }
@@ -86,6 +145,53 @@ public class RecipesScraperController : Controller
 
 
     //Helper methods for scraping
+
+    private async Task<string> ScrapeCookingTimeAsync(string url)//check if correct
+    {//Warning : maybe you should use Descendants to go into the div to scrape the cooking time
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string cookingTimeXPath = "//*[@id=\"recipe-details_1-0\"]/div[1]/div[3]";//cooking time
+        var cookingTime = doc.DocumentNode.SelectSingleNode(cookingTimeXPath);
+        if (cookingTime != null)
+        {
+            return cookingTime.InnerText;
+        }
+        return "cookingTime not found";
+
+    }
+    private async Task<string> ScrapeNameAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string nameXPath = "//*[@id=\"article-heading_1-0\"]";
+        var nameNode = doc.DocumentNode.SelectSingleNode(nameXPath);
+
+        if (nameNode != null)
+        {
+            
+            return nameNode.InnerText; 
+        }
+        else
+        {
+            return "Name not found"; 
+        }
+    }
+    private async Task<string> ScrapeDescriptionAsync(string url)//check if correct
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string descriptionXPath = "//*[@id=\"article-subheading_1-0\"]";
+        var description = doc.DocumentNode.SelectSingleNode(descriptionXPath);
+        if (description != null)
+        {
+            return description.InnerText;
+        }
+        return "Name not found";
+        
+    }
 
 
     private async Task<List<string>> ScrapeInstructionsAsync(string url)
