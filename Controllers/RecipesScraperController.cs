@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using CsvHelper;
 using Fitness_Tracker.Data;
 using Fitness_Tracker.HelperClassesForScraping;
@@ -23,6 +24,12 @@ public class RecipesScraperController : Controller
         _recipeRepository = recipeRepository;
     }
 
+    //TODO :scrape
+
+    //public User Creator { get; set; }//todo
+
+
+
 
     [HttpGet]
     public async Task<IActionResult> ScrapeData()
@@ -34,7 +41,7 @@ public class RecipesScraperController : Controller
         // Accumulate scraped instructions in a list
         List<string> allScrapedInstructions = new List<string>();
 
-        //This part scrapes the name of the meal (remove new lines)
+        //This part scrapes the name of the meal 
         {
             if (System.IO.File.Exists(filePath))
             {
@@ -45,7 +52,7 @@ public class RecipesScraperController : Controller
                 string link = mealLinks[i];
                 var scrapedName = await ScrapeNameAsync(link);
 
-                Console.WriteLine(scrapedName);
+              //  Console.WriteLine(scrapedName);
 
 
                 if (i > 2) break;
@@ -53,7 +60,26 @@ public class RecipesScraperController : Controller
             }
         }
 
-        //This part scrapes the description of a recipe (check if it works)
+        //This part scrapes the creation date
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedCreation = await ScrapeCreationDateAsync(link);
+
+                //Console.WriteLine(scrapedCreation.ToString("MM/dd/yyyy"));
+
+
+                if (i > 2) break;
+
+            }
+        }
+
+        //This part scrapes the description of a recipe 
         {
             if (System.IO.File.Exists(filePath))
             {
@@ -64,13 +90,14 @@ public class RecipesScraperController : Controller
                 string link = mealLinks[i];
                 var scrapedDesc = await ScrapeDescriptionAsync(link);
 
-                Console.WriteLine(scrapedDesc);
+              //  Console.WriteLine(scrapedDesc);
 
 
                 if (i > 2) break;
 
             }
         }
+
         //This part scrapes the cooking time
         {
             if (System.IO.File.Exists(filePath))
@@ -82,7 +109,7 @@ public class RecipesScraperController : Controller
                 string link = mealLinks[i];
                 var scrapedCookingTime = await ScrapeCookingTimeAsync(link);
 
-                Console.WriteLine(scrapedCookingTime);
+              //  Console.WriteLine(scrapedCookingTime);
 
 
                 if (i > 2) break;
@@ -90,6 +117,24 @@ public class RecipesScraperController : Controller
             }
         }
 
+        //This part scrapes the servings
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedServings = await ScrapeServingsAsync(link);
+
+                 // Console.WriteLine(scrapedServings);
+
+
+                if (i > 2) break;
+
+            }
+        }
 
         // This part of the code gets all the ingredient rows
         if (!System.IO.File.Exists(filePathIngredients))
@@ -104,10 +149,11 @@ public class RecipesScraperController : Controller
             {
                 string link = mealLinks[i];
                 var scrapedInfo = await ScrapeIngredientsAsync(link);
-
+                
             }
             System.IO.File.Create(filePathIngredients);
         }
+
         //This part scrapes the instructions 
         {
             if (System.IO.File.Exists(filePath))
@@ -128,12 +174,13 @@ public class RecipesScraperController : Controller
                 if (i > 2) break;
 
             }
-           //foreach (var item in allScrapedInstructions)
-           //{
-           //    await Console.Out.WriteLineAsync(item);
-           //}
+         // foreach (var item in allScrapedInstructions)
+         // {
+         //     await Console.Out.WriteLineAsync(item);
+         // }
         }
 
+       
 
         return View("ScrapeData");
     }
@@ -146,18 +193,77 @@ public class RecipesScraperController : Controller
 
     //Helper methods for scraping
 
+
+    private async Task<DateTime> ScrapeCreationDateAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string creationXPath = "//*[@id=\"mntl-bylines__group_1-0\"]/div[2]";
+        var creation = doc.DocumentNode.SelectSingleNode(creationXPath);
+        if (creation != null)
+        {
+            // Use a regular expression to extract the date in the "Month Day, Year" format
+            string creationText = creation.InnerText.Trim();
+            string datePattern = @"\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}\b";
+            Match match = Regex.Match(creationText, datePattern);
+
+            if (match.Success)
+            {
+                // Parse the matched date into a DateTime
+                if (DateTime.TryParse(match.Value, out DateTime creationDate))
+                {
+                    return creationDate;
+                }
+            }
+        }
+
+        // If the date is not found or cannot be parsed, return DateTime.MinValue or another suitable default value.
+        return DateTime.MinValue;
+    }
+    private async Task<string> ScrapeServingsAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+
+
+        var labelNode = doc.DocumentNode.SelectSingleNode("//div[@class='mntl-recipe-details__label'][contains(text(), 'Servings')]");
+        if (labelNode != null)
+        {
+            // Get the corresponding "mntl-recipe-details__value" within the same parent div
+            var valueNode = labelNode.SelectSingleNode("../div[@class='mntl-recipe-details__value']");
+
+            if (valueNode != null)
+            {
+                return valueNode.InnerText.Trim();
+            }
+        }
+
+        return "Servings information not found";
+    }
+
     private async Task<string> ScrapeCookingTimeAsync(string url)//check if correct
     {//Warning : maybe you should use Descendants to go into the div to scrape the cooking time
         HtmlWeb web = new HtmlWeb();
         web.OverrideEncoding = Encoding.UTF8;
         HtmlDocument doc = await web.LoadFromWebAsync(url);
-        string cookingTimeXPath = "//*[@id=\"recipe-details_1-0\"]/div[1]/div[3]";//cooking time
-        var cookingTime = doc.DocumentNode.SelectSingleNode(cookingTimeXPath);
-        if (cookingTime != null)
+
+        // Look for the div element with the text "Total Time"
+        var labelNode = doc.DocumentNode.SelectSingleNode("//div[@class='mntl-recipe-details__label'][contains(text(), 'Total Time')]");
+
+        if (labelNode != null)
         {
-            return cookingTime.InnerText;
+            // Get the corresponding "mntl-recipe-details__value" within the same parent div
+            var valueNode = labelNode.SelectSingleNode("../div[@class='mntl-recipe-details__value']");
+
+            if (valueNode != null)
+            {
+                return valueNode.InnerText.Trim();
+            }
         }
-        return "cookingTime not found";
+
+        return "Total Time not found";
 
     }
     private async Task<string> ScrapeNameAsync(string url)
@@ -171,7 +277,7 @@ public class RecipesScraperController : Controller
         if (nameNode != null)
         {
             
-            return nameNode.InnerText; 
+            return nameNode.InnerText.Trim(); 
         }
         else
         {
@@ -187,7 +293,7 @@ public class RecipesScraperController : Controller
         var description = doc.DocumentNode.SelectSingleNode(descriptionXPath);
         if (description != null)
         {
-            return description.InnerText;
+            return description.InnerText.Trim();
         }
         return "Name not found";
         
