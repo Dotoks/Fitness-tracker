@@ -192,7 +192,14 @@ public class RecipesScraperController : Controller
 
 
     //Helper methods for scraping
+    //private async Task<User> ScrapeUserAsync(string url)
+    //{
+    //    HtmlWeb web = new HtmlWeb();
+    //    web.OverrideEncoding = Encoding.UTF8;
+    //    HtmlDocument doc = await web.LoadFromWebAsync(url);
+    //    string userXPath = "//*[@id=\"mntl-bylines__item_1-0\"]/a";
 
+    //}
 
     private async Task<DateTime> ScrapeCreationDateAsync(string url)
     {
