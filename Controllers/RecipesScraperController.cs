@@ -25,8 +25,10 @@ public class RecipesScraperController : Controller
     }
 
     //TODO :scrape
-
-    //public User Creator { get; set; }//todo
+    //public decimal Calories { get; set; }
+    //public decimal Carbohydrates { get; set; }
+    //public decimal Proteins { get; set; }
+    //public decimal Fats { get; set; }
 
 
 
@@ -41,6 +43,25 @@ public class RecipesScraperController : Controller
         // Accumulate scraped instructions in a list
         List<string> allScrapedInstructions = new List<string>();
 
+        //This part scrapes the UserScraped model
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+              //  var scrapedNameOfUser = await ScrapeUserAsync(link);
+
+              //   Console.WriteLine(scrapedNameOfUser);
+
+
+                if (i > 2) break;
+
+            }
+        }
+
         //This part scrapes the name of the meal 
         {
             if (System.IO.File.Exists(filePath))
@@ -50,7 +71,7 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedName = await ScrapeNameAsync(link);
+              //  var scrapedName = await ScrapeNameAsync(link);
 
               //  Console.WriteLine(scrapedName);
 
@@ -69,7 +90,7 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedCreation = await ScrapeCreationDateAsync(link);
+               // var scrapedCreation = await ScrapeCreationDateAsync(link);
 
                 //Console.WriteLine(scrapedCreation.ToString("MM/dd/yyyy"));
 
@@ -88,7 +109,7 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedDesc = await ScrapeDescriptionAsync(link);
+              //  var scrapedDesc = await ScrapeDescriptionAsync(link);
 
               //  Console.WriteLine(scrapedDesc);
 
@@ -107,7 +128,7 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedCookingTime = await ScrapeCookingTimeAsync(link);
+              //  var scrapedCookingTime = await ScrapeCookingTimeAsync(link);
 
               //  Console.WriteLine(scrapedCookingTime);
 
@@ -126,7 +147,7 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedServings = await ScrapeServingsAsync(link);
+               // var scrapedServings = await ScrapeServingsAsync(link);
 
                  // Console.WriteLine(scrapedServings);
 
@@ -148,7 +169,7 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedInfo = await ScrapeIngredientsAsync(link);
+               // var scrapedInfo = await ScrapeIngredientsAsync(link);
                 
             }
             System.IO.File.Create(filePathIngredients);
@@ -163,14 +184,14 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedInstructions = await ScrapeInstructionsAsync(link);
-                foreach (var scrapedInstruction in scrapedInstructions)
-                {
-                    allScrapedInstructions.Add(scrapedInstruction); // Accumulate instructions
+               // var scrapedInstructions = await ScrapeInstructionsAsync(link);
+              //  foreach (var scrapedInstruction in scrapedInstructions)
+              //  {
+                //    allScrapedInstructions.Add(scrapedInstruction); // Accumulate instructions
                     //TODO: seed database with the instructions (I have to create new recipe entities and then I will be able to do that
                     //)
 
-                }
+              //  }
                 if (i > 2) break;
 
             }
@@ -180,8 +201,78 @@ public class RecipesScraperController : Controller
          // }
         }
 
-       
+        //This part scrapes the calories
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+              //  var scrapedCalories = await ScrapeCaloriesAsync(link);
 
+                //  Console.WriteLine(scrapedCalories);
+
+
+                if (i > 2) break;
+
+            }
+        }
+        //This part scrapes the fats
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+               //  var scrapedFats = await ScrapeFatsAsync(link);
+
+                //  Console.WriteLine(scrapedFats);
+
+
+                if (i > 2) break;
+
+            }
+        }
+        //This part scrapes the carbs
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedCarbs = await ScrapeCarbsAsync(link);
+
+                Console.WriteLine(scrapedCarbs);
+
+
+                if (i > 2) break;
+
+            }
+        }
+        //This part scrapes the protein
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+            }
+            for (int i = 0; i < mealLinks.Count; i++)
+            {
+                string link = mealLinks[i];
+                var scrapedProtein = await ScrapeProteinAsync(link);
+
+                Console.WriteLine(scrapedProtein);
+
+
+                if (i > 2) break;
+
+            }
+        }
         return View("ScrapeData");
     }
 
@@ -192,14 +283,112 @@ public class RecipesScraperController : Controller
 
 
     //Helper methods for scraping
-    //private async Task<User> ScrapeUserAsync(string url)
-    //{
-    //    HtmlWeb web = new HtmlWeb();
-    //    web.OverrideEncoding = Encoding.UTF8;
-    //    HtmlDocument doc = await web.LoadFromWebAsync(url);
-    //    string userXPath = "//*[@id=\"mntl-bylines__item_1-0\"]/a";
+    private async Task<decimal> ScrapeProteinAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string ProteinXPath = "//*[@id=\"mntl-nutrition-facts-summary_1-0\"]/table/tbody/tr[4]/td[1]";
+        var ProteinNode = doc.DocumentNode.SelectSingleNode(ProteinXPath);
+        if (ProteinNode != null)
+        {
+            string ProteinText = ProteinNode.InnerText.Trim();
 
-    //}
+            // Extract the numeric part using a regular expression
+            string numericValue = Regex.Match(ProteinText, @"\d+").Value;
+
+            if (decimal.TryParse(numericValue, out decimal ProteinValue))
+            {
+                return ProteinValue;
+            }
+        }
+
+        return 0; // Return a default value if scraping fails or no numeric value found
+    }
+    private async Task<decimal> ScrapeCarbsAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string CarbsXPath = "//*[@id=\"mntl-nutrition-facts-summary_1-0\"]/table/tbody/tr[3]/td[1]";
+        var CarbsNode = doc.DocumentNode.SelectSingleNode(CarbsXPath);
+        if (CarbsNode != null)
+        {
+            string CarbsText = CarbsNode.InnerText.Trim();
+
+            // Extract the numeric part using a regular expression
+            string numericValue = Regex.Match(CarbsText, @"\d+").Value;
+
+            if (decimal.TryParse(numericValue, out decimal CarbsValue))
+            {
+                return CarbsValue;
+            }
+        }
+
+        return 0; // Return a default value if scraping fails or no numeric value found
+    }
+    private async Task<decimal> ScrapeFatsAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string fatsXPath = "//*[@id=\"mntl-nutrition-facts-summary_1-0\"]/table/tbody/tr[2]/td[1]";
+        var fatsNode = doc.DocumentNode.SelectSingleNode(fatsXPath);
+        if (fatsNode != null)
+        {
+            string fatsText = fatsNode.InnerText.Trim();
+
+            // Extract the numeric part using a regular expression
+            string numericValue = Regex.Match(fatsText, @"\d+").Value;
+
+            if (decimal.TryParse(numericValue, out decimal fatsValue))
+            {
+                return fatsValue;
+            }
+        }
+
+        return 0; // Return a default value if scraping fails or no numeric value found
+    }
+    private async Task<decimal> ScrapeCaloriesAsync(string url)
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string caloriesXPath = "//*[@id=\"mntl-nutrition-facts-summary_1-0\"]/table/tbody/tr[1]/td[1]";
+        var calorieNode = doc.DocumentNode.SelectSingleNode(caloriesXPath);
+        if (calorieNode != null)
+        {
+            string calorieText = calorieNode.InnerText.Trim();
+            if (decimal.TryParse(calorieText, out decimal calorieValue))
+            {
+                return calorieValue;
+            }
+            else
+            {
+                return 0; 
+            }
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+
+    private async Task<string> ScrapeUserAsync(string url)//WARNING THIS IS UserScraped MODEL NOT User!!!!!!!!!!!!!!!!!!
+    {
+        HtmlWeb web = new HtmlWeb();
+        web.OverrideEncoding = Encoding.UTF8;
+        HtmlDocument doc = await web.LoadFromWebAsync(url);
+        string userXPath = "//*[@id=\"mntl-bylines__item_1-0\"]/a";
+        var nameOfUserNode = doc.DocumentNode.SelectSingleNode(userXPath);
+        if (nameOfUserNode != null)
+        {
+
+            return nameOfUserNode.InnerText.Trim();
+        }
+        return "Name not found";
+    }
 
     private async Task<DateTime> ScrapeCreationDateAsync(string url)
     {

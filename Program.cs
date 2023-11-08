@@ -48,5 +48,4 @@ app.Run();
 
 
 //TODO: Finish with scraping the data for macros and recipes in the controller.
-//TODO: Fix scraping the instructions
 //TODO: Fix RecipesService CreateAsync
