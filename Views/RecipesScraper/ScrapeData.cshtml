@@ -4,7 +4,7 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<ul>
+@* <ul>
     @if (ViewData["ScrapedMealHrefs"] != null)
     {
         foreach (var mealHref in ViewData["ScrapedMealHrefs"] as List<string>)
@@ -12,7 +12,7 @@
             <li><a href="@mealHref">@mealHref</a></li>
         }
     }
-</ul>
+</ul> *@
 
 
 @* <h3>Scraped rows in list of ingredients:</h3>
@@ -30,7 +30,7 @@
 
 
 
-@{
+@* @{
     var scrapedInstructions = ViewData["ScrapedInstructions"] as List<string>;
 }
 
@@ -48,4 +48,4 @@
 else
 {
     <p>No instructions available.</p>
-}
+} *@

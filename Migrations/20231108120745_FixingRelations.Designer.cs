@@ -4,6 +4,7 @@ using Fitness_Tracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitness_Tracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231108120745_FixingRelations")]
+    partial class FixingRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,7 +227,7 @@ namespace Fitness_Tracker.Migrations
 
                     b.HasIndex("CreatedBy");
 
-                    b.ToTable("RecipesScraped");
+                    b.ToTable("RecipeScraped");
                 });
 
             modelBuilder.Entity("Fitness_Tracker.Models.UserScraped", b =>
@@ -241,7 +244,7 @@ namespace Fitness_Tracker.Migrations
 
                     b.HasKey("UserScrapedID");
 
-                    b.ToTable("UsersScraped");
+                    b.ToTable("UserScraped");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

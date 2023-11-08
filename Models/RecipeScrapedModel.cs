@@ -1,13 +1,12 @@
-using Microsoft.AspNetCore.Identity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fitness_Tracker.Models
 {
-    public class Recipe
+    public class RecipeScraped
     {
         [Key]
-        public int RecipeID { get; set; }
+        public int RecipeScrapedID { get; set; }
 
         [Required]
         public string RecipeName { get; set; }
@@ -24,16 +23,19 @@ namespace Fitness_Tracker.Models
 
         public int Servings { get; set; }
 
-        public string? DifficultyLevel { get; set; }
+      
 
         public DateTime CreatedDate { get; set; }
 
         [Required]
-        
-        public string CreatedBy { get; set; } // Foreign Key referencing UserID
+
+        public long CreatedBy { get; set; } // Foreign Key referencing UserID
         [ForeignKey("CreatedBy")]
-        public User Creator { get; set; }
+        public UserScraped Creator { get; set; }
 
         public ICollection<Macro> Macros { get; set; } // One-to-many relationship via the junction table
     }
 }
+
+
+// public string? DifficultyLevel { get; set; }//can't scrape because there is nothing in the allrecipes website about difficulty

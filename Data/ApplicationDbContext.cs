@@ -19,6 +19,8 @@ namespace Fitness_Tracker.Data
         public DbSet<Macro> Macros { get; set; }
         public DbSet<User> applicationUsers { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<RecipeScraped> RecipesScraped { get; set; }
+        public DbSet<UserScraped> UsersScraped { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
