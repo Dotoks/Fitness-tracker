@@ -24,11 +24,8 @@ public class RecipesScraperController : Controller
         _recipeRepository = recipeRepository;
     }
 
-    //TODO :scrape
-    //public decimal Calories { get; set; }
-    //public decimal Carbohydrates { get; set; }
-    //public decimal Proteins { get; set; }
-    //public decimal Fats { get; set; }
+    //TODO: fill the database with data about the meals
+
 
 
 
@@ -36,12 +33,46 @@ public class RecipesScraperController : Controller
     [HttpGet]
     public async Task<IActionResult> ScrapeData()
     {
+
         string filePath = "MealLinks.txt";
         ScrapeAndSaveMealLinks(filePath); // scrapes the links for the meals
         string filePathIngredients = "IngredientsScraped.txt";
         List<string> mealLinks = new List<string>();
         // Accumulate scraped instructions in a list
         List<string> allScrapedInstructions = new List<string>();
+        //if (System.IO.File.Exists(filePath))
+        //{
+        //    mealLinks = System.IO.File.ReadAllLines(filePath).ToList();
+        //}
+        //foreach (var link in mealLinks)
+        //{
+        //    //This part scrapes the UserScraped model name!!!
+        //    var scrapedName = await ScrapeNameAsync(link);
+        //    //This part scrapes the name of the meal 
+        //    var scrapedNameOfUser = await ScrapeUserAsync(link);
+        //    //This part scrapes the creation date
+        //    var scrapedCreation = await ScrapeCreationDateAsync(link);
+        //    //This part scrapes the description of a recipe 
+        //    var scrapedDesc = await ScrapeDescriptionAsync(link);
+        //    //This part scrapes the cooking time
+        //    var scrapedCookingTime = await ScrapeCookingTimeAsync(link);
+        //    //This part scrapes the servings
+        //    var scrapedServings = await ScrapeServingsAsync(link);
+        //    // This part of the code gets all the ingredient rows
+        //    var scrapedInfo = await ScrapeIngredientsAsync(link);
+        //    //This part scrapes the instructions 
+        //    var scrapedInstructions = await ScrapeInstructionsAsync(link);
+        //    //This part scrapes the calories
+        //    var scrapedCalories = await ScrapeCaloriesAsync(link);
+        //    //This part scrapes the fats
+        //    var scrapedFats = await ScrapeFatsAsync(link);
+        //    //This part scrapes the carbs
+        //    var scrapedCarbs = await ScrapeCarbsAsync(link);
+        //    //This part scrapes the protein
+        //    var scrapedProtein = await ScrapeProteinAsync(link);
+
+        //}
+
 
         //This part scrapes the UserScraped model
         {
@@ -246,9 +277,9 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedCarbs = await ScrapeCarbsAsync(link);
+              //  var scrapedCarbs = await ScrapeCarbsAsync(link);
 
-                Console.WriteLine(scrapedCarbs);
+              //  Console.WriteLine(scrapedCarbs);
 
 
                 if (i > 2) break;
@@ -264,9 +295,9 @@ public class RecipesScraperController : Controller
             for (int i = 0; i < mealLinks.Count; i++)
             {
                 string link = mealLinks[i];
-                var scrapedProtein = await ScrapeProteinAsync(link);
+               // var scrapedProtein = await ScrapeProteinAsync(link);
 
-                Console.WriteLine(scrapedProtein);
+              //  Console.WriteLine(scrapedProtein);
 
 
                 if (i > 2) break;
