@@ -30,6 +30,9 @@ namespace Fitness_Tracker.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BodyID"));
 
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("BodyFatPercentage")
                         .HasColumnType("decimal(18,2)");
 
@@ -45,10 +48,8 @@ namespace Fitness_Tracker.Migrations
                     b.Property<decimal>("Height")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("Kilograms")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserID")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Weight")
@@ -56,9 +57,33 @@ namespace Fitness_Tracker.Migrations
 
                     b.HasKey("BodyID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserID");
 
-                    b.ToTable("Bodies");
+                    b.ToTable("Body");
+                });
+
+            modelBuilder.Entity("Fitness_Tracker.Models.DailyCalories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BodyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CaloriesConsumed")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CaloriesRecommended")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BodyId");
+
+                    b.ToTable("DailyCalories");
                 });
 
             modelBuilder.Entity("Fitness_Tracker.Models.Ingredient", b =>
@@ -472,7 +497,20 @@ namespace Fitness_Tracker.Migrations
                 {
                     b.HasOne("Fitness_Tracker.Models.User", null)
                         .WithMany("BodyMeasurements")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Fitness_Tracker.Models.DailyCalories", b =>
+                {
+                    b.HasOne("Fitness_Tracker.Models.Body", "Body")
+                        .WithMany()
+                        .HasForeignKey("BodyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Body");
                 });
 
             modelBuilder.Entity("Fitness_Tracker.Models.Instruction", b =>

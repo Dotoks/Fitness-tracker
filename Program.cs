@@ -13,12 +13,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddTransient<IRecipesService, RecipesService>();
+builder.Services.AddTransient<IBodyService, BodyService>();
+builder.Services.AddTransient<ICaloriesService, CaloriesService>();
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<IBodyRepository, BodyRepository>();
 builder.Services.AddMemoryCache();
 var app = builder.Build();
 

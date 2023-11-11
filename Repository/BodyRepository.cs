@@ -13,7 +13,7 @@ namespace Fitness_Tracker.Repository
         }
         public void Update(Body obj)
         {
-            _db.Bodies.Update(obj);
+            _db.Body.Update(obj);
         }
     }
 }
