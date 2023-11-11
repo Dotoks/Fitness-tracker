@@ -5,24 +5,25 @@
 namespace Fitness_Tracker.Migrations
 {
     /// <inheritdoc />
-    public partial class RequiredAttribute : Migration
+    public partial class AddedAgeToBody : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "Name",
-                table: "AspNetUsers",
+                name: "Age",
+                table: "Body",
                 type: "int",
-                nullable: true);
+                nullable: false,
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Name",
-                table: "AspNetUsers");
+                name: "Age",
+                table: "Body");
         }
     }
 }
