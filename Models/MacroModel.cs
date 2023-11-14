@@ -18,15 +18,13 @@ namespace Fitness_Tracker.Models
         [Required]
         public int RecipeID { get; set; } // Foreign Key referencing RecipeID
 
-        [Required]
-        public int RecipeScrapedID { get; set; } // Foreign Key referencing RecipeID
+        
         [Required]
         public int IngredientID { get; set; } // Foreign Key referencing IngredientID
 
         [ForeignKey("RecipeID")]
         public Recipe Recipe { get; set; }
-        [ForeignKey("RecipeScrapedID")]
-        public RecipeScraped RecipeScraped { get; set; }
+        
         [ForeignKey("IngredientID")]
         public Ingredient Ingredient { get; set; }
 

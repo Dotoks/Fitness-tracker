@@ -18,7 +18,7 @@ namespace Fitness_Tracker.Services
         public async Task CreateAsync(string userId, decimal weight, decimal height, int age)
         {
 
-            var currentBody = _context.Body.FirstOrDefault(x => x.UserID == userId);
+            var currentBody = _context.Bodies.FirstOrDefault(x => x.UserID == userId);
 
             var DailyCalories = new DailyCalories
             {
@@ -41,7 +41,7 @@ namespace Fitness_Tracker.Services
         {
             var today = DateTime.Today;
 
-            var existingBodyInfo = _context.Body.Where(x => x.UserID == userId && x.EffectiveThroughDate == DateTime.MaxValue)
+            var existingBodyInfo = _context.Bodies.Where(x => x.UserID == userId && x.EffectiveThroughDate == DateTime.MaxValue)
                 .OrderByDescending(x => x.EffectiveFromDate)
                 .FirstOrDefault();
 

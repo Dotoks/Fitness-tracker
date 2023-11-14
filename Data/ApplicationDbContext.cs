@@ -12,18 +12,19 @@ namespace Fitness_Tracker.Data
         {
         }
 
-        public DbSet<Body> Body { get; set; }
+        public DbSet<Body> Bodies { get; set; }
 
         public DbSet<DailyCalories> DailyCalories { get; set; }
 
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Instruction> Instructions { get; set; }
+
 
         public DbSet<Macro> Macros { get; set; }
-        public DbSet<User> applicationUsers { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<RecipeScraped> RecipesScraped { get; set; }
-        public DbSet<UserScraped> UsersScraped { get; set; }
-
+        public DbSet<User> ApplicationUsers { get; set; }
+        
+     
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
