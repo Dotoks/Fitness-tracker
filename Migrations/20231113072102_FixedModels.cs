@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Fitness_Tracker.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedDailyCalories : Migration
+    public partial class FixedModels : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -66,19 +66,6 @@ namespace Fitness_Tracker.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ingredients", x => x.IngredientID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UsersScraped",
-                columns: table => new
-                {
-                    UserScrapedID = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UsersScraped", x => x.UserScrapedID);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,7 +175,7 @@ namespace Fitness_Tracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Body",
+                name: "Bodies",
                 columns: table => new
                 {
                     BodyID = table.Column<int>(type: "int", nullable: false)
@@ -199,13 +186,14 @@ namespace Fitness_Tracker.Migrations
                     CurrentRecordIndicator = table.Column<bool>(type: "bit", nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Height = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
                     BodyFatPercentage = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Body", x => x.BodyID);
+                    table.PrimaryKey("PK_Bodies", x => x.BodyID);
                     table.ForeignKey(
-                        name: "FK_Body_AspNetUsers_UserID",
+                        name: "FK_Bodies_AspNetUsers_UserID",
                         column: x => x.UserID,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -238,30 +226,6 @@ namespace Fitness_Tracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RecipesScraped",
-                columns: table => new
-                {
-                    RecipeScrapedID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RecipeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CookingTime = table.Column<int>(type: "int", nullable: false),
-                    Servings = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<long>(type: "bigint", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RecipesScraped", x => x.RecipeScrapedID);
-                    table.ForeignKey(
-                        name: "FK_RecipesScraped_UsersScraped_CreatedBy",
-                        column: x => x.CreatedBy,
-                        principalTable: "UsersScraped",
-                        principalColumn: "UserScrapedID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "DailyCalories",
                 columns: table => new
                 {
@@ -275,34 +239,27 @@ namespace Fitness_Tracker.Migrations
                 {
                     table.PrimaryKey("PK_DailyCalories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DailyCalories_Body_BodyId",
+                        name: "FK_DailyCalories_Bodies_BodyId",
                         column: x => x.BodyId,
-                        principalTable: "Body",
+                        principalTable: "Bodies",
                         principalColumn: "BodyID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Instruction",
+                name: "Instructions",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     InstructionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RecipeId = table.Column<int>(type: "int", nullable: false),
-                    RecipeScrapedID = table.Column<int>(type: "int", nullable: false)
+                    RecipeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Instruction", x => x.id);
+                    table.PrimaryKey("PK_Instructions", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Instruction_RecipesScraped_RecipeScrapedID",
-                        column: x => x.RecipeScrapedID,
-                        principalTable: "RecipesScraped",
-                        principalColumn: "RecipeScrapedID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Instruction_Recipes_RecipeId",
+                        name: "FK_Instructions_Recipes_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipes",
                         principalColumn: "RecipeID",
@@ -320,7 +277,6 @@ namespace Fitness_Tracker.Migrations
                     Proteins = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Fats = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     RecipeID = table.Column<int>(type: "int", nullable: false),
-                    RecipeScrapedID = table.Column<int>(type: "int", nullable: false),
                     IngredientID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -331,12 +287,6 @@ namespace Fitness_Tracker.Migrations
                         column: x => x.IngredientID,
                         principalTable: "Ingredients",
                         principalColumn: "IngredientID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Macros_RecipesScraped_RecipeScrapedID",
-                        column: x => x.RecipeScrapedID,
-                        principalTable: "RecipesScraped",
-                        principalColumn: "RecipeScrapedID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Macros_Recipes_RecipeID",
@@ -386,8 +336,8 @@ namespace Fitness_Tracker.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Body_UserID",
-                table: "Body",
+                name: "IX_Bodies_UserID",
+                table: "Bodies",
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
@@ -396,14 +346,9 @@ namespace Fitness_Tracker.Migrations
                 column: "BodyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Instruction_RecipeId",
-                table: "Instruction",
+                name: "IX_Instructions_RecipeId",
+                table: "Instructions",
                 column: "RecipeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Instruction_RecipeScrapedID",
-                table: "Instruction",
-                column: "RecipeScrapedID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Macros_IngredientID",
@@ -416,18 +361,8 @@ namespace Fitness_Tracker.Migrations
                 column: "RecipeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Macros_RecipeScrapedID",
-                table: "Macros",
-                column: "RecipeScrapedID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Recipes_CreatedBy",
                 table: "Recipes",
-                column: "CreatedBy");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RecipesScraped_CreatedBy",
-                table: "RecipesScraped",
                 column: "CreatedBy");
         }
 
@@ -453,7 +388,7 @@ namespace Fitness_Tracker.Migrations
                 name: "DailyCalories");
 
             migrationBuilder.DropTable(
-                name: "Instruction");
+                name: "Instructions");
 
             migrationBuilder.DropTable(
                 name: "Macros");
@@ -462,19 +397,13 @@ namespace Fitness_Tracker.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Body");
+                name: "Bodies");
 
             migrationBuilder.DropTable(
                 name: "Ingredients");
 
             migrationBuilder.DropTable(
-                name: "RecipesScraped");
-
-            migrationBuilder.DropTable(
                 name: "Recipes");
-
-            migrationBuilder.DropTable(
-                name: "UsersScraped");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

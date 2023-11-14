@@ -4,16 +4,16 @@ using Fitness_Tracker.Repository.IRepository;
 
 namespace Fitness_Tracker.Repository
 {
-    public class BodyRepository: Repository<Body>, IBodyRepository
+    public class InstructionRepository : Repository<Instruction>, IInstructionRepository
     {
         private ApplicationDbContext _db;
-        public BodyRepository(ApplicationDbContext db) : base(db)
+        public InstructionRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
-        public void Update(Body obj)
+        public void Update(Instruction obj)
         {
-            _db.Bodies.Update(obj);
+            _db.Instructions.Update(obj);
         }
     }
 }

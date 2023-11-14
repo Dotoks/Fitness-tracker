@@ -19,7 +19,7 @@ namespace Fitness_Tracker.ViewModels.Recipes
         public string PreparationInstructions { get; set; }
 
         [Required]
-        public int CookingTime { get; set; }
+        public string CookingTime { get; set; }
 
         public int Servings { get; set; }
 
