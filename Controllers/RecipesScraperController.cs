@@ -20,14 +20,16 @@ public class RecipesScraperController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IRecipeRepository _recipeRepository;
+    private readonly IUserRepository _userRepository;
     private readonly UserManager<IdentityUser> userManager;
     //  private static bool areIngredientsScraped = false;
 
-    public RecipesScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, UserManager<IdentityUser> userManager)
+    public RecipesScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, UserManager<IdentityUser> userManager, IUserRepository userRepository)
     {
         _unitOfWork = unitOfWork;
         _recipeRepository = recipeRepository;
         this.userManager = userManager;
+        _userRepository = userRepository;
     }
 
     //TODO: fill the database with data about the meals
@@ -127,13 +129,13 @@ public class RecipesScraperController : Controller
                     Servings = scrapedServings,
                     DifficultyLevel = null,
                     CreatedBy = scrapeAndCreateFakeUserAccount.Id,
-                    Creator = scrapeAndCreateFakeUserAccount
+                    Creator = scrapeAndCreateFakeUserAccount as User
                    // PreparationInstructions = scrapedInstructions
                     // Macros = new List<Macro>(),
                 };
                 // Add the recipe to the database context
                 _unitOfWork.Recipe.Add(recipe);
-               await _unitOfWork.SaveAsync();
+                _unitOfWork.Save();
 
 
 
@@ -154,7 +156,7 @@ public class RecipesScraperController : Controller
 
                     // Add the ingredient to the database context and save changes to get IngredientID
                     _unitOfWork.Ingredient.Add(ingredient);
-                    await _unitOfWork.SaveAsync();
+                    _unitOfWork.Save();
 
                     ingredientIds.Add(ingredient.IngredientID);
                 }
@@ -173,7 +175,7 @@ public class RecipesScraperController : Controller
 
                     // Add the Macro to the database context and save changes
                     _unitOfWork.Macro.Add(macro);
-                   await _unitOfWork.SaveAsync();
+                   _unitOfWork.Save();
                 }
 
 
@@ -190,7 +192,7 @@ public class RecipesScraperController : Controller
 
                     // Add the instruction to the database context and save changes
                     _unitOfWork.Instruction.Add(instruction);
-                    await _unitOfWork.SaveAsync();
+                    _unitOfWork.Save();
                 }
                
             }
@@ -298,18 +300,24 @@ public class RecipesScraperController : Controller
             return 0;
         }
     }
-    private async Task<User> CreateUserAsync(string name, string email, string password)
+    private async Task<IdentityUser> CreateUserAsync(string name, string email, string password)
     {
-        var existingUser = await userManager.FindByNameAsync(name);
+        // Filter out non-alphanumeric characters from the name
+        var cleanedName = new string(name.Where(char.IsLetterOrDigit).ToArray());
+        var cleanedEmail = $"{cleanedName}@gmail.com";
+        var existingUser = await userManager.FindByNameAsync(cleanedName);
+
         if (existingUser != null)
         {
            
-            var user =   _unitOfWork.User.Get(u => u.Email == email);
-            return user;
+            //var user =   _unitOfWork.User.Get(u => u.Email == email);
+            return existingUser;
         }
         else
         {
-            var user = new User {Name = name, UserName = email, Email = email };
+            
+            
+            var user = new User { Name = cleanedName, UserName = cleanedEmail, Email = cleanedEmail };
             var result = await userManager.CreateAsync(user, password);
 
             if (!result.Succeeded)
@@ -324,7 +332,7 @@ public class RecipesScraperController : Controller
 
 
 
-    private async Task<User> ScrapeUserAsync(string url)//Scrapes the userName. Create fake accounts!!!
+    private async Task<IdentityUser> ScrapeUserAsync(string url)//Scrapes the userName. Create fake accounts!!!
     {
         HtmlWeb web = new HtmlWeb();
         web.OverrideEncoding = Encoding.UTF8;
@@ -341,7 +349,7 @@ public class RecipesScraperController : Controller
             string firstName = fullName.Split(' ')[0];
             string email = $"{firstName}@gmail.com";
             string password = "Qqq123*";
-            var user = _unitOfWork.User.Get(u => u.UserName == email);
+            var user = await userManager.FindByNameAsync(email);//_unitOfWork.User.Get(u => u.UserName == email);
             // Create the user with the scraped information
             if (user == null)
             {
@@ -349,18 +357,30 @@ public class RecipesScraperController : Controller
             }
             else
             {
+              //  _userRepository.Detach(user);
                 return user;
             }
         }
         else
         {
+           
             // Create a default user if name not found
             string defaultName = "Unknown";
             string defaultEmail = "unknown@gmail.com";
             string defaultPassword = "Qqq123*";
+            var userUnknown = await userManager.FindByNameAsync(defaultEmail);
+            if (userUnknown == null)
+            {
+                // Create a user with default information
 
-            // Create a user with default information
-            return await CreateUserAsync(defaultName, defaultEmail, defaultPassword);
+                return await CreateUserAsync(defaultName, defaultEmail, defaultPassword);
+            }
+            else
+            {
+                return userUnknown;
+
+            }
+          
         }
     }
 
