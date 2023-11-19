@@ -27,6 +27,19 @@
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ActivityLevel" class="control-label"></label>
+                @Html.DropDownListFor(model => model.ActivityLevel, new List<SelectListItem>
+                {
+                new SelectListItem { Text = "Basic Metabolic Rate", Value = "BMR" },
+                new SelectListItem { Text = "Sedentary (little or no exercise)", Value = "NoActivity" },
+                new SelectListItem { Text = "Lightly active (light exercise/sports 1-3 days​/week)", Value = "LightActivity" },
+                new SelectListItem { Text = "Moderately active (moderate exercise/sports 3-5 days/week)", Value = "ModerateActivity" },
+                new SelectListItem { Text = "Very active (hard exercise/sports 6-7 days a week)", Value = "VeryActivity" },
+                new SelectListItem { Text = "Extra active (very hard exercise/sports & physical job or 2x training)", Value = "ExtraActivity" }
+                }, new { @class = "form-control" })
+                <span asp-validation-for="ActivityLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

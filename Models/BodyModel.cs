@@ -18,6 +18,8 @@ namespace Fitness_Tracker.Models
 
         public bool CurrentRecordIndicator { get; set; }
 
+        public required string ActivityLevel { get; set; }
+
         public decimal Weight { get; set; }
 
         public decimal Height { get; set; }

@@ -14,6 +14,9 @@ namespace Fitness_Tracker.ViewModels.Body
         [Required]
         public int Age { get; set; }
 
+        [Required]
+        public string ActivityLevel { get; set; }
+
         public DateTime EffectiveFromDate { get; set; }
 
         public DateTime EffectiveThroughDate { get; set; }

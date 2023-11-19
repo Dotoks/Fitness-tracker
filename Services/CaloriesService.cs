@@ -15,15 +15,39 @@ namespace Fitness_Tracker.Services
             _context = context;
         }
 
-        public async Task CreateAsync(string userId, decimal weight, decimal height, int age)
+        public async Task CreateAsync(string userId, decimal weight, decimal height, int age, string acitivtyLevel)
         {
 
             var currentBody = _context.Body.FirstOrDefault(x => x.UserID == userId);
 
+            double BMR = (double)((10 * weight) + ((decimal)6.25 * height) - (5 * age) + 5);
+
+            switch (acitivtyLevel)
+            {
+                case "BMR":
+                    BMR *= 1;
+                    break;
+                case "NoActivity":
+                    BMR *= 1.2;
+                        break;
+                case "LightActivity":
+                    BMR *= 1.375;
+                    break;
+                case "ModerateActivity":
+                    BMR *= 1.55;
+                    break;
+                case "VeryActivity":
+                    BMR *= 1.725;
+                    break;
+                case "ExtraActivity":
+                    BMR *= 1.9;
+                    break;
+            }
+
             var DailyCalories = new DailyCalories
             {
                 BodyId = currentBody.BodyID,
-                CaloriesRecommended = (int)Math.Ceiling((10 * weight) + ((decimal)6.25 * height) - (5 * age) + 5),
+                CaloriesRecommended = (int)BMR,
                 CaloriesConsumed = 0
 
             };
