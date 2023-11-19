@@ -17,7 +17,7 @@ namespace Fitness_Tracker.Services
 
         public async Task CreateAsync(CreateBodyInputModel input, string userId)
         {
-            var currentBodyModel = _context.Body
+            var currentBodyModel = _context.Bodies
             .Where(b => b.UserID == userId && b.EffectiveThroughDate == DateTime.MaxValue) // Fetch the current record
             .OrderByDescending(b => b.EffectiveFromDate) // Order by StartDate to get the latest
             .FirstOrDefault();
@@ -53,7 +53,7 @@ namespace Fitness_Tracker.Services
 
         public Body GetBody<Body>(string userId)
         {
-            var currentBody = _context.Body.Where(x => x.UserID == userId && x.EffectiveThroughDate == DateTime.MaxValue).FirstOrDefault();
+            var currentBody = _context.Bodies.Where(x => x.UserID == userId && x.EffectiveThroughDate == DateTime.MaxValue).FirstOrDefault();
 
             throw new NotImplementedException();
         }

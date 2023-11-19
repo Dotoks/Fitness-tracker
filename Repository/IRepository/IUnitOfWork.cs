@@ -7,8 +7,11 @@
         IMacroRepository Macro { get; }
         IRecipeRepository Recipe { get; }
         IUserRepository User { get; }
+        IInstructionRepository Instruction { get; }
+        IDailyCaloriesRepository DailyCalories { get; }
 
         void Save();
         Task SaveAsync();
+        
     }
 }

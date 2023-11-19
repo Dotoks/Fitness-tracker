@@ -15,9 +15,6 @@ namespace Fitness_Tracker.Models
 
 
 
-        public int RecipeScrapedID { get; set; }
-        [ForeignKey("RecipeScrapedID")]
-
-        public RecipeScraped RecipeScraped { get; set; }
+       
     }
 }

@@ -10,30 +10,37 @@ namespace Fitness_Tracker.Models
         public int RecipeID { get; set; }
 
         [Required]
-        public string RecipeName { get; set; }
+        public string RecipeName { get; set; }//done 
 
         [Required]
-        public string Description { get; set; }
+        public string Description { get; set; }//done 
 
         [Required]
-        public ICollection<Instruction> PreparationInstructions { get; set; }
+        public ICollection<Instruction> PreparationInstructions { get; set; }//done 
 
 
 
-        public int CookingTime { get; set; }
+        public string CookingTime { get; set; }//done 
 
-        public int Servings { get; set; }
+        public int Servings { get; set; }//done 
 
-        public string? DifficultyLevel { get; set; }
+        public string? DifficultyLevel { get; set; }//done 
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }//done 
 
         [Required]
         
         public string CreatedBy { get; set; } // Foreign Key referencing UserID
         [ForeignKey("CreatedBy")]
-        public User Creator { get; set; }
+        public User Creator { get; set; }//done 
 
         public ICollection<Macro> Macros { get; set; } // One-to-many relationship via the junction table
     }
 }
+//RecipeName = scrapedName,
+//CookingTime = scrapedCookingTime,
+//CreatedDate = scrapedCreation,
+//Description = scrapedDesc,
+//Servings = scrapedServings,
+//DifficultyLevel = null,
+//Creator = user,

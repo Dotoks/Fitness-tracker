@@ -1,6 +1,7 @@
 ﻿using Fitness_Tracker.Data;
 using Fitness_Tracker.Models;
 using Fitness_Tracker.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fitness_Tracker.Repository
 {
@@ -11,6 +12,16 @@ namespace Fitness_Tracker.Repository
         {
             _db = db;
         }
+
+        public void Detach(User entity)
+        {
+            var entry = _db.Entry(entity);
+            if (entry != null)
+            {
+                entry.State = EntityState.Detached;
+            }
+        }
+
         public void Update(User user)
         {
             _db.Users.Update(user);

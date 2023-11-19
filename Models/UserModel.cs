@@ -6,7 +6,7 @@ namespace Fitness_Tracker.Models
     public class User : IdentityUser
     {
         [Required]
-        public int Name { get; set; }
+        public string Name { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]
