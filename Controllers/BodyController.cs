@@ -48,7 +48,7 @@ namespace Fitness_Tracker.Controllers
             try
             {
                 await bodiesService.CreateAsync(input, user.Id);
-                await caloriesService.CreateAsync(user.Id, input.Weight, input.Height, input.Age);
+                await caloriesService.CreateAsync(user.Id, input.Weight, input.Height, input.Age, input.ActivityLevel);
             }
             catch (Exception ex)
             {

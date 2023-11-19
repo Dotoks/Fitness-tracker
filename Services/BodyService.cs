@@ -36,6 +36,7 @@ namespace Fitness_Tracker.Services
                 Weight = input.Weight,
                 Height = input.Height,
                 Age = input.Age,
+                ActivityLevel = input.ActivityLevel,
                 EffectiveFromDate = DateTime.UtcNow,
                 EffectiveThroughDate = DateTime.MaxValue,
                 CurrentRecordIndicator = true
