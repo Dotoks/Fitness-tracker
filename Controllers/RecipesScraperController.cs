@@ -13,6 +13,7 @@ using HtmlAgilityPack;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Fitness_Tracker.HelperClassesForRecipes;
 
 namespace Fitness_Tracker.Controllers;
 
@@ -22,7 +23,7 @@ public class RecipesScraperController : Controller
     private readonly IRecipeRepository _recipeRepository;
     private readonly IUserRepository _userRepository;
     private readonly UserManager<IdentityUser> userManager;
-    //  private static bool areIngredientsScraped = false;
+   
 
     public RecipesScraperController(IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, UserManager<IdentityUser> userManager, IUserRepository userRepository)
     {
@@ -32,34 +33,36 @@ public class RecipesScraperController : Controller
         _userRepository = userRepository;
     }
 
-    //TODO: fill the database with data about the meals
 
-
-    //public class Recipe
-    //{
-
-    //    [Required]
-
-    //    public string CreatedBy { get; set; } // Foreign Key referencing UserID
-    //    [ForeignKey("CreatedBy")]
-    //    public User Creator { get; set; }
-
-    //    public ICollection<Macro> Macros { get; set; } // One-to-many relationship via the junction table
-    //}
-
-
-
-
-
-    //RecipeName = scrapedName,
-    //CookingTime = scrapedCookingTime,//MIGRATE DATABASE
-    //CreatedDate = scrapedCreation,
-    //Description = scrapedDesc,
-    //Servings = scrapedServings
-
-
+    //This is not fully implemented, in order for it to work correctly, you should use AJAX 
+    //Use JavaScript to update the content on the page dynamically when the AJAX response is received.
+    //Replace the existing list of recipes with the updated list based on the user's filter criteria.
     [HttpGet]
-    public async Task<IActionResult> ScrapeData()//AlmostWorks
+    public async Task<IActionResult> Index(List<string>? ingredientFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter)
+    {
+        try
+        {
+            await ScrapeData();
+            IEnumerable<Recipe> recipes;
+            recipes = _recipeRepository.FilterByIngredient(ingredientFilter, cookingTimeFilter, recipeNameFilter);
+
+            return View(recipes);
+        }
+        catch (Exception ex)
+        {
+          
+            return View("Error"); 
+        }
+    }
+
+
+
+
+
+
+
+
+    public async Task ScrapeData()
     {
 
         string filePath = "MealLinks.txt";
@@ -198,9 +201,13 @@ public class RecipesScraperController : Controller
             }
         }
 
-        System.IO.File.Create(filePathEverythingscrapedTxt);
+        if (!System.IO.File.Exists(filePathEverythingscrapedTxt))
+        {
+            System.IO.File.Create(filePathEverythingscrapedTxt);
+        }
         
-        return View("ScrapeData");
+        
+        
     }
 
 
