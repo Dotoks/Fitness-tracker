@@ -3,8 +3,33 @@
 }
 
 <h2>@ViewData["Title"]</h2>
+ @model IEnumerable<Recipe>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+ 
+ 
+ <div id="filterSection">
+     <h3>Filter Recipes</h3>
+     <form id="filterForm">
+         <!-- Add your filter inputs here -->
+         <label for="caloriesMin">Min Calories:</label>
+         <input type="text" id="caloriesMin" name="caloriesMinFilter">
 
-@* <ul>
+         <label for="caloriesMax">Max Calories:</label>
+         <input type="text" id="caloriesMax" name="caloriesMaxFilter">
+
+         <!-- Add other filter inputs here -->
+
+         <button type="submit">Apply Filters</button>
+     </form>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+
+ @* <ul>
     @if (ViewData["ScrapedMealHrefs"] != null)
     {
         foreach (var mealHref in ViewData["ScrapedMealHrefs"] as List<string>)

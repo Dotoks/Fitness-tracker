@@ -47,7 +47,7 @@ namespace Fitness_Tracker.Repository
 
             return minTotalMinutes <= totalMinutes && totalMinutes <= maxTotalMinutes;
         }
-        public IEnumerable<Recipe> FilterByIngredient(List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter)
+        public IEnumerable<Recipe> Filter(List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter)
         {
             var filteredRecipes = _db.Recipes.AsQueryable();
             if (ingredientsFilter != null && ingredientsFilter.Any())
@@ -73,6 +73,43 @@ namespace Fitness_Tracker.Repository
                 filteredRecipes = filteredRecipes
                     .Where(r => r.RecipeName.Contains(recipeNameFilter));
             }
+
+
+
+            //this filters the recipes by their calories
+            if (caloriesMinFilter != null && caloriesMinFilter > 0)
+            {
+                filteredRecipes = filteredRecipes
+                    .Where(r => r.Macros.Any(m => m.Calories >= caloriesMinFilter));
+            }
+
+            if (caloriesMaxFilter != null && caloriesMaxFilter > 0)
+            {
+                filteredRecipes = filteredRecipes
+                    .Where(r => r.Macros.Any(m => m.Calories <= caloriesMaxFilter));
+            }
+
+
+
+
+            //this is for the other macros
+            if (carbsFilter != null || carbsFilter != 0)//checks if there are recipes with less carbs 
+            {
+                filteredRecipes = filteredRecipes
+                    .Where(r => r.Macros.Any(m => m.Carbohydrates <= carbsFilter));
+            }
+            if (proteinFilter != null || proteinFilter != 0)//checks if there are recipes with less proteins 
+            {
+                filteredRecipes = filteredRecipes
+                    .Where(r => r.Macros.Any(m => m.Proteins <= proteinFilter));
+            }
+            if (fatsFilter != null || fatsFilter != 0)//checks if there are recipes with less fats 
+            {
+                filteredRecipes = filteredRecipes
+                    .Where(r => r.Macros.Any(m => m.Fats <= fatsFilter));
+            }
+
+
 
             return filteredRecipes.ToList();
            

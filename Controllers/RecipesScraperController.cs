@@ -38,13 +38,14 @@ public class RecipesScraperController : Controller
     //Use JavaScript to update the content on the page dynamically when the AJAX response is received.
     //Replace the existing list of recipes with the updated list based on the user's filter criteria.
     [HttpGet]
-    public async Task<IActionResult> Index(List<string>? ingredientFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter)
+    public async Task<IActionResult> Index(List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter)
     {
         try
         {
             await ScrapeData();
             IEnumerable<Recipe> recipes;
-            recipes = _recipeRepository.FilterByIngredient(ingredientFilter, cookingTimeFilter, recipeNameFilter);
+
+            recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter);
 
             return View(recipes);
         }
