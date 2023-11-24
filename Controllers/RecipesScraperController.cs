@@ -133,9 +133,13 @@ public class RecipesScraperController : Controller
                     Servings = scrapedServings,
                     DifficultyLevel = null,
                     CreatedBy = scrapeAndCreateFakeUserAccount.Id,
-                    Creator = scrapeAndCreateFakeUserAccount as User
-                   // PreparationInstructions = scrapedInstructions
-                    // Macros = new List<Macro>(),
+                    Creator = scrapeAndCreateFakeUserAccount as User,
+                    Calories = scrapedCalories,//... get the value from scraping,
+                    Fats = scrapedFats, //... get the value from scraping,
+                    Carbohydrates = scrapedCarbs,//... get the value from scraping,
+                    Proteins = scrapedProtein //... get the value from scraping,
+                                              // PreparationInstructions = scrapedInstructions
+                                              // Macros = new List<Macro>(),
                 };
                 // Add the recipe to the database context
                 _unitOfWork.Recipe.Add(recipe);
@@ -167,18 +171,15 @@ public class RecipesScraperController : Controller
 
                 foreach (var ingredientId in ingredientIds)
                 {
-                    var macro = new Macro
+                    var RecipeIngredient = new RecipeIngredient
                     {
                         RecipeID = recipe.RecipeID,
                         IngredientID = ingredientId,
-                        Calories = scrapedCalories,//... get the value from scraping,
-                        Fats =scrapedFats, //... get the value from scraping,
-                        Carbohydrates = scrapedCarbs,//... get the value from scraping,
-                        Proteins =scrapedProtein //... get the value from scraping,
+                        
                     };
 
                     // Add the Macro to the database context and save changes
-                    _unitOfWork.Macro.Add(macro);
+                    _unitOfWork.RecipeIngredient.Add(RecipeIngredient);
                    _unitOfWork.Save();
                 }
 

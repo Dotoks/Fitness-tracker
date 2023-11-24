@@ -4,16 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fitness_Tracker.Models
 {
-    public class Macro//TODO
+    public class RecipeIngredient//TODO
     {
         [Key]
         public int MacroID { get; set; }
 
         
-        public decimal Calories { get; set; }
-        public decimal Carbohydrates { get; set; }
-        public decimal Proteins { get; set; }
-        public decimal Fats { get; set; }
+       
 
         [Required]
         public int RecipeID { get; set; } // Foreign Key referencing RecipeID

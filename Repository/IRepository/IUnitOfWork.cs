@@ -4,7 +4,7 @@
     {
         IBodyRepository Body { get; }
         IIngredientRepository Ingredient { get; }
-        IMacroRepository Macro { get; }
+        IRecipeIngredientRepository RecipeIngredient { get; }
         IRecipeRepository Recipe { get; }
         IUserRepository User { get; }
         IInstructionRepository Instruction { get; }

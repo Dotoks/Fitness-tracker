@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Fitness_Tracker.Migrations
 {
     /// <inheritdoc />
-    public partial class FixedModels : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,7 +31,7 @@ namespace Fitness_Tracker.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -184,6 +184,7 @@ namespace Fitness_Tracker.Migrations
                     EffectiveFromDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EffectiveThroughDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CurrentRecordIndicator = table.Column<bool>(type: "bit", nullable: false),
+                    ActivityLevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Height = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
@@ -208,7 +209,11 @@ namespace Fitness_Tracker.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RecipeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CookingTime = table.Column<int>(type: "int", nullable: false),
+                    Calories = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Carbohydrates = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Proteins = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Fats = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CookingTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Servings = table.Column<int>(type: "int", nullable: false),
                     DifficultyLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -267,29 +272,25 @@ namespace Fitness_Tracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Macros",
+                name: "RecipeIngredients",
                 columns: table => new
                 {
                     MacroID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Calories = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Carbohydrates = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Proteins = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Fats = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     RecipeID = table.Column<int>(type: "int", nullable: false),
                     IngredientID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Macros", x => x.MacroID);
+                    table.PrimaryKey("PK_RecipeIngredients", x => x.MacroID);
                     table.ForeignKey(
-                        name: "FK_Macros_Ingredients_IngredientID",
+                        name: "FK_RecipeIngredients_Ingredients_IngredientID",
                         column: x => x.IngredientID,
                         principalTable: "Ingredients",
                         principalColumn: "IngredientID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Macros_Recipes_RecipeID",
+                        name: "FK_RecipeIngredients_Recipes_RecipeID",
                         column: x => x.RecipeID,
                         principalTable: "Recipes",
                         principalColumn: "RecipeID",
@@ -351,13 +352,13 @@ namespace Fitness_Tracker.Migrations
                 column: "RecipeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Macros_IngredientID",
-                table: "Macros",
+                name: "IX_RecipeIngredients_IngredientID",
+                table: "RecipeIngredients",
                 column: "IngredientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Macros_RecipeID",
-                table: "Macros",
+                name: "IX_RecipeIngredients_RecipeID",
+                table: "RecipeIngredients",
                 column: "RecipeID");
 
             migrationBuilder.CreateIndex(
@@ -391,7 +392,7 @@ namespace Fitness_Tracker.Migrations
                 name: "Instructions");
 
             migrationBuilder.DropTable(
-                name: "Macros");
+                name: "RecipeIngredients");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -14,6 +14,6 @@ namespace Fitness_Tracker.Models
         [Required]
         public string Unit { get; set; }
 
-        public ICollection<Macro> Macros { get; set; } // One-to-many relationship
+        public ICollection<RecipeIngredient> Macros { get; set; } // One-to-many relationship
     }
 }

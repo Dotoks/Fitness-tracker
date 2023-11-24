@@ -137,41 +137,6 @@ namespace Fitness_Tracker.Migrations
                     b.ToTable("Instructions");
                 });
 
-            modelBuilder.Entity("Fitness_Tracker.Models.Macro", b =>
-                {
-                    b.Property<int>("MacroID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MacroID"));
-
-                    b.Property<decimal>("Calories")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Carbohydrates")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Fats")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("IngredientID")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Proteins")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("RecipeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("MacroID");
-
-                    b.HasIndex("IngredientID");
-
-                    b.HasIndex("RecipeID");
-
-                    b.ToTable("Macros");
-                });
-
             modelBuilder.Entity("Fitness_Tracker.Models.Recipe", b =>
                 {
                     b.Property<int>("RecipeID")
@@ -179,6 +144,12 @@ namespace Fitness_Tracker.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeID"));
+
+                    b.Property<decimal>("Calories")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Carbohydrates")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("CookingTime")
                         .IsRequired()
@@ -198,6 +169,12 @@ namespace Fitness_Tracker.Migrations
                     b.Property<string>("DifficultyLevel")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Fats")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Proteins")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("RecipeName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -210,6 +187,29 @@ namespace Fitness_Tracker.Migrations
                     b.HasIndex("CreatedBy");
 
                     b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("Fitness_Tracker.Models.RecipeIngredient", b =>
+                {
+                    b.Property<int>("MacroID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MacroID"));
+
+                    b.Property<int>("IngredientID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("MacroID");
+
+                    b.HasIndex("IngredientID");
+
+                    b.HasIndex("RecipeID");
+
+                    b.ToTable("RecipeIngredients");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -470,7 +470,18 @@ namespace Fitness_Tracker.Migrations
                     b.Navigation("Recipe");
                 });
 
-            modelBuilder.Entity("Fitness_Tracker.Models.Macro", b =>
+            modelBuilder.Entity("Fitness_Tracker.Models.Recipe", b =>
+                {
+                    b.HasOne("Fitness_Tracker.Models.User", "Creator")
+                        .WithMany("CreatedRecipes")
+                        .HasForeignKey("CreatedBy")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Creator");
+                });
+
+            modelBuilder.Entity("Fitness_Tracker.Models.RecipeIngredient", b =>
                 {
                     b.HasOne("Fitness_Tracker.Models.Ingredient", "Ingredient")
                         .WithMany("Macros")
@@ -487,17 +498,6 @@ namespace Fitness_Tracker.Migrations
                     b.Navigation("Ingredient");
 
                     b.Navigation("Recipe");
-                });
-
-            modelBuilder.Entity("Fitness_Tracker.Models.Recipe", b =>
-                {
-                    b.HasOne("Fitness_Tracker.Models.User", "Creator")
-                        .WithMany("CreatedRecipes")
-                        .HasForeignKey("CreatedBy")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Creator");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

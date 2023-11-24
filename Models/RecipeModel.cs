@@ -19,6 +19,16 @@ namespace Fitness_Tracker.Models
         public ICollection<Instruction> PreparationInstructions { get; set; }//done 
 
 
+        public decimal Calories { get; set; }
+        public decimal Carbohydrates { get; set; }
+        public decimal Proteins { get; set; }
+        public decimal Fats { get; set; }
+
+
+
+
+
+
 
         public string CookingTime { get; set; }//done 
 
@@ -34,7 +44,7 @@ namespace Fitness_Tracker.Models
         [ForeignKey("CreatedBy")]
         public User Creator { get; set; }//done 
 
-        public ICollection<Macro> Macros { get; set; } // One-to-many relationship via the junction table
+        public ICollection<RecipeIngredient> Macros { get; set; } // One-to-many relationship via the junction table
     }
 }
 //RecipeName = scrapedName,
