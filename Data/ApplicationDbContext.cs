@@ -14,7 +14,7 @@ namespace Fitness_Tracker.Data
 
         public DbSet<Body> Bodies { get; set; }
 
-        public DbSet<DailyCalories> DailyCalories { get; set; }
+        public DbSet<DailyMacros> DailyMacros { get; set; }
 
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Instruction> Instructions { get; set; }

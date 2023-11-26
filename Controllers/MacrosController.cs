@@ -2,14 +2,14 @@
 
 namespace Fitness_Tracker.Controllers
 {
-    public class CaloriesController : Controller
+    public class MacrosController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult UpdateDailyCalories(int userId)
+        public IActionResult UpdateDailyMacros(int userId)
         {
             var today = DateTime.Today;
 

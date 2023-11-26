@@ -17,7 +17,7 @@ namespace Fitness_Tracker.Repository
 
         public IUserRepository User { get; private set; }
         public IInstructionRepository Instruction { get; private set; }
-        public IDailyCaloriesRepository DailyCalories { get; private set; }
+        public IDailyMacrosRepository DailyMacros { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -25,7 +25,7 @@ namespace Fitness_Tracker.Repository
             Body = new BodyRepository(_db);
             Ingredient = new IngredientRepository(_db);
             Instruction = new InstructionRepository(_db);
-            DailyCalories = new DailyCaloriesRepository(_db);
+            DailyMacros = new DailyMacrosRepository(_db);
             RecipeIngredient = new RecipeIngredientRepository(_db);
             Recipe = new RecipeRepository(_db);
             User = new UserRepository(_db);

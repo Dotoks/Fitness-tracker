@@ -8,7 +8,7 @@
         IRecipeRepository Recipe { get; }
         IUserRepository User { get; }
         IInstructionRepository Instruction { get; }
-        IDailyCaloriesRepository DailyCalories { get; }
+        IDailyMacrosRepository DailyMacros { get; }
 
         void Save();
         Task SaveAsync();

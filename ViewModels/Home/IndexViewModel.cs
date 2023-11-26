@@ -5,7 +5,7 @@ namespace Fitness_Tracker.ViewModels.Home
 {
     public class IndexViewModel
     {
-        public UpdateCaloriesInputModel UpdateCaloriesInput { get; set; }
+        public UpdateMacrosInputModel UpdateCaloriesInput { get; set; }
 
         public CreateBodyInputModel CreateBodyInput { get; set; }
     }

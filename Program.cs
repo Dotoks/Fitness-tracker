@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 builder.Services.AddTransient<IRecipesService, RecipesService>();
 builder.Services.AddTransient<IBodyService, BodyService>();
-builder.Services.AddTransient<ICaloriesService, CaloriesService>();
+builder.Services.AddTransient<IMacrosService, MacrosService>();
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();

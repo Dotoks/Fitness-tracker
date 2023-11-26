@@ -2,8 +2,8 @@
 
 namespace Fitness_Tracker.Repository.IRepository
 {
-    public interface IDailyCaloriesRepository : IRepository<DailyCalories>
+    public interface IDailyMacrosRepository : IRepository<DailyMacros>
     {
-        void Update(DailyCalories obj);
+        void Update(DailyMacros obj);
     }
 }

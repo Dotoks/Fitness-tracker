@@ -10,12 +10,12 @@ namespace Fitness_Tracker.Controllers
     public class BodyController : Controller
     {
         private readonly IBodyService bodiesService;
-        private readonly ICaloriesService caloriesService;
+        private readonly IMacrosService macrosService;
         private readonly UserManager<IdentityUser> userManager;
-        public BodyController(IBodyService bodyService,ICaloriesService caloriesService, UserManager<IdentityUser> userManager)
+        public BodyController(IBodyService bodyService,IMacrosService macrosService, UserManager<IdentityUser> userManager)
         {
             this.bodiesService = bodyService;
-            this.caloriesService = caloriesService;
+            this.macrosService = macrosService;
             this.userManager = userManager;
         }
         // GET: BodyController
@@ -48,7 +48,7 @@ namespace Fitness_Tracker.Controllers
             try
             {
                 await bodiesService.CreateAsync(input, user.Id);
-                await caloriesService.CreateAsync(user.Id, input.Weight, input.Height, input.Age, input.ActivityLevel);
+                await macrosService.CreateAsync(user.Id, input.Weight, input.Height, input.Age, input.ActivityLevel, input.Gender);
             }
             catch (Exception ex)
             {
