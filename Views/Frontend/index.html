@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="preconnect" href="https://rsms.me/">
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>     
-        <script type="text/babel" src="./headerComponent.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <script type="text/babel" src="./headerComponent.js"></script>
+    <script type="text/babel" src="./home-carousel.js"></script>
 
-
-        <title>Fitness tracker</title>
+    <title>Fitness tracker</title>
 </head>
 <body>
-    <!-- This div will serve as the root for the React app -->
+
     <div id="root"></div>
+
+    <div id="root-carousel"></div>
+
     <script type="text/babel">
+        const images = [
+          'Images/image1.jpg',
+          'Images/image2.jpg',
+          'Images/image3.jpg',
+        ];
+
         ReactDOM.render(<Header />, document.getElementById('root'));
+        ReactDOM.render(React.createElement(Carousel, { images }), document.getElementById('root-carousel'));
+
     </script>
-    <script src="script.js"></script>
-    </body>
-    </html>
+
+    <script type="text/babel" src="script.js"></script>
+
+</body>
+</html>
