@@ -1,15 +1,11 @@
+// home-carousel.js
 function Carousel({ images }) {
     const [currentIndex, setCurrentIndex] = React.useState(0);
     const [startX, setStartX] = React.useState(0);
-    const [isDragging, setIsDragging] = React.useState(false);
-  
-    const updateCarousel = () => {
-      const newTransformValue = -currentIndex * 100 + '%';
-      return { transform: `translateX(${newTransformValue})` };
-    };
   
     const nextSlide = () => {
-      setCurrentIndex((currentIndex + 1) % images.length);
+      const newIndex = (currentIndex + 1) % images.length;
+      setCurrentIndex(newIndex);
     };
   
     const prevSlide = () => {
@@ -17,31 +13,33 @@ function Carousel({ images }) {
     };
   
     const handleMouseDown = (e) => {
-      e.stopPropagation();
-      setIsDragging(true);
-      setStartX(e.pageX - document.querySelector('.carousel').offsetLeft);
+      setStartX(e.pageX);
     };
   
     const handleMouseMove = (e) => {
-      if (!isDragging) return;
-      const x = e.pageX - document.querySelector('.carousel').offsetLeft;
-      const walk = (x - startX) * 2; 
+      const walk = (e.pageX - startX) * 2; // Adjust the multiplier for sensitivity
       document.querySelector('.carousel').scrollLeft = document.querySelector('.carousel').scrollLeft - walk;
     };
   
-    const handleMouseUp = () => {
-      setIsDragging(false);
+    const handleTouchStart = (e) => {
+      setStartX(e.touches[0].pageX);
+    };
+  
+    const handleTouchMove = (e) => {
+      const walk = (e.touches[0].pageX - startX) * 2; // Adjust the multiplier for sensitivity
+      document.querySelector('.carousel').scrollLeft = document.querySelector('.carousel').scrollLeft - walk;
     };
   
     return (
-      <div className="carousel-container">
-        <div
-          className="carousel"
-          style={updateCarousel()}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-        >
+      <div
+        className="carousel-container"
+        style={{ maxWidth: '100%', height: 'calc(100vh - 50px)', overflow: 'hidden' }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
+        <div className="carousel">
           {images.map((image, index) => (
             <div className="slide" key={index}>
               <img src={image} alt={`Slide ${index + 1}`} />
@@ -58,5 +56,6 @@ function Carousel({ images }) {
     );
   }
   
+  // Attach the component to the global namespace
   window.Carousel = Carousel;
   
