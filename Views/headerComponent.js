@@ -11,6 +11,10 @@ function Header() {
                     <li><a href='../Account/account.html'>Account</a></li>
                 </ul>
             </nav>
+            <div className="header-icons">
+                <a href="#" className="icon-link"><img src="../Images/facebook-icon.png" alt="Facebook" style={{ width: '32px', height: '32x' }} /></a>
+                <a href="#" className="icon-link"><img src="../Images/instagram-icon.png" alt="Instagram" style={{ width: '30px', height: '30px' }} /></a>
+                <a href="#" className="icon-link"><img src="../Images/x-icon.png" alt="X" style={{ width: '30px', height: '30px' }} /></a>            </div>
         </header>
     );
 }

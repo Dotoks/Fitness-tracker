@@ -3,8 +3,8 @@ html, body {
     margin: 0;
 }
 header {
-    background-color: #9086FF;
-    min-height: 150px;
+    background-color: #7FB2D2;
+    min-height: 130px;
     padding: 20px;
     text-align: center;   
     font-family:'Inter', sans-serif;
@@ -12,7 +12,7 @@ header {
 
 header h1 {
     font-size: 2.5em; 
-    color: #FFF;
+    color: #f5f5dc;
     margin: 0;  
     font-family:'Inter', sans-serif;
     margin-top: 5px;
@@ -33,10 +33,10 @@ header nav ul li {
     font-family:'Inter', sans-serif;
 
 }
-/* Header navigtion*/
+
 header nav ul li a {
     text-decoration: none;
-    color: #fff; 
+    color: #f5f5dc; 
     padding: 5px 10px; 
     font-size: 1.5em;  
     border-radius: 5px; 
@@ -46,12 +46,26 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background-color: #ffffff; 
-    color: #9086FF; 
+    background-color: #f5f5dc; 
+    color: #7FB2D2; 
 }
 
+.header-icons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .icon-link {
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+  }
+
 body {
-    background-color: #9086FF;
+    background-color: #7FB2D2;
     font-family: 'Inter', sans-serif;  
     margin: 0; 
 }
@@ -80,17 +94,17 @@ button {
     cursor: pointer;
     border: none;            
  /*   outline: none;       */    
-    background-color: #bfa2f2; 
+    background-color: #7FB2D2; 
     color: white;           
     transition: background-color 0.5s;
 }
 
 button:hover {
-    background-color: #ae89ee; 
+    background-color: #7FB2D2; 
 }
 
 .slider {
-    background-color: #9086FF;  
+    background-color: #7FB2D2;  
     height: 50px;          
     width: 50%;            
     position: absolute;    
@@ -131,7 +145,7 @@ button:hover {
 }
 .carousel-container {
     max-width: 100%;
-    height: 550px; 
+    height: 569px; 
     overflow: hidden;
     position: relative;
   }
@@ -160,7 +174,7 @@ button:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   color: #fff;
   border: none;
   padding: 7px;
