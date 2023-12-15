@@ -1,31 +1,212 @@
-﻿﻿@{
+﻿@{
     ViewData["Title"] = "Scraped Meals";
 }
 
 <h2>@ViewData["Title"]</h2>
- @model IEnumerable<Recipe>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!-- Implement frontend part for filters and pagination -->
- 
- <div id="filterSection">
-     <h3>Filter Recipes</h3>
-     <form id="filterForm">
-         <!-- Add your filter inputs here -->
-         <label for="caloriesMin">Min Calories:</label>
-         <input type="text" id="caloriesMin" name="caloriesMinFilter">
+@model IEnumerable<Recipe>
 
-         <label for="caloriesMax">Max Calories:</label>
-         <input type="text" id="caloriesMax" name="caloriesMaxFilter">
 
-         <!-- Add other filter inputs here -->
 
-         <button type="submit">Apply Filters</button>
-     </form>
- </div>
+ <!-- Implement frontend part for filters and pagination -->
+ 
+ 
+
+<!--  recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter,
+recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter); -->
+
+
+<div id="filterSection">
+    <h3>Filter Recipes</h3>
+    <form id="filterForm">
+        <!-- Add your filter inputs here -->
+        @using (Html.BeginForm("Index", "RecipesScraper", FormMethod.Get))
+        {
+            <!-- Ingredients Filter -->
+            <label for="ingredientsFilter">Ingredients:</label>
+            <input id="ingredientsFilter" name="ingredientsFilter" type="text"/>
+
+            <!-- Cooking Time Filter -->
+            <label for="minHours">MinHours:</label>
+            <input id="minHours" name="minHours" type="number" step="1" />
+
+            <label for="minMinutes">MinMinutes:</label>
+            <input id="minMinutes" name="minMinutes" type="number" step="1" />
+
+            <label for="maxHours">MaxHours:</label>
+            <input id="maxHours" name="maxHours" type="number" step="1" />
+
+            <label for="maxMinutes">MaxMinutes:</label>
+            <input id="maxMinutes" name="maxMinutes" type="number" step="1" />
+            
+          
+                
+
+
+
+
+           
+
+           
+     
+            <input type="submit" value="Filter">
+        }
+      
+       
+        
+       
+    </form>
+     
+     
+</div>
+
+<!--   <span asp-validation-for="cookingTimeFilter.MinHours" class="text-danger"></span>  -->
+@* <div class="form-group">
+                <label>Minimum Minutes:</label>
+                <input id="MinMinutes" name="MinMinutes" type="text" class="form-control" />
+                <!--   <span asp-validation-for="cookingTimeFilter.MinMinutes" class="text-danger"></span>-->
+         </div>
+
+         <div class="form-group">
+                <label>Maximum Hours:</label>
+                <input id="MaxHours" name="MaxHours" type="text" class="form-control" />
+                <!-- <span asp-validation-for="cookingTimeFilter.MaxHours" class="text-danger"></span>-->
+         </div> *@
+
+        
+@*  <label asp-for="cookingTimeFilter.MaxMinutes">Maximum Minutes:</label>
+                <input asp-for="cookingTimeFilter.MaxMinutes" class="form-control" />
+                <span asp-validation-for="cookingTimeFilter.MaxMinutes" class="text-danger"></span> *@
+@*  <div class="wrapper">
+             <div class="values">
+                 <span id="rangeHours1">
+                     00:00
+                 </span>
+                 <span> &dash; </span>
+                 <span id="rangeHours2">
+                     23:59
+                 </span>
+             </div>
+             <div class="container">
+                 <div class="slider-track"></div>
+                 <input type="range" min="0" max="1440" value="0" id="slider-hours-1" oninput="slideHoursOne()">
+                 <input type="range" min="0" max="1440" value="1440" id="slider-hours-2" oninput="slideHoursTwo()">
+             </div>
+         </div> *@
+
+
+@* <script>
+    $(document).ready(function () {
+        // Attach a click event handler to the button
+        $("#submitBtn").on("click", function () {
+            // Get the value of MinHours input field
+            var minHoursValue = $("#MinHours").val();
+
+            // Make an AJAX request
+            $.ajax({
+                type: "GET",
+                url: "/RecipesScraper/Index", // Adjust the URL as needed
+                data: { MinHours: minHoursValue },
+                success: function (data) {
+                    // Handle the success response if needed
+                    console.log("Success:", data);
+                },
+                error: function (error) {
+                    // Handle the error response if needed
+                    console.log("Error:", error);
+                }
+            });
+        });
+    });
+</script> *@
+@*      <label>Minimum Hours:</label>
+                 <input id="MinHours" name="MinHours" type="number"/> *@
+@* <script>
+    window.onload = function () {
+        slideHoursOne();
+        slideHoursTwo();
+    }
+
+    let sliderHoursOne = document.getElementById("slider-hours-1");
+    let sliderHoursTwo = document.getElementById("slider-hours-2");
+    let displayValHoursOne = document.getElementById("rangeHours1");
+    let displayValHoursTwo = document.getElementById("rangeHours2");
+    let minGapHours = 0;
+    let sliderTrackHours = document.querySelector(".slider-track-hours");
+    let sliderMaxValueHours;
+
+    function slideHoursOne() {
+        console.log("slideHoursOne");
+        sliderMaxValueHours = parseInt(sliderHoursOne.max); // Update sliderMaxValue
+        if (parseInt(sliderHoursTwo.value) - parseInt(sliderHoursOne.value) <= minGapHours) {
+            sliderHoursOne.value = parseInt(sliderHoursTwo.value) - minGapHours;
+        }
+        displayValHoursOne.textContent = formatTime(sliderHoursOne.value);
+        fillColorHours();
+        console.log(sliderHoursOne.value);
+    }
+
+    function slideHoursTwo() {
+        console.log("slideHoursTwo");
+        sliderMaxValueHours = parseInt(sliderHoursTwo.max); // Update sliderMaxValue
+        if (parseInt(sliderHoursTwo.value) - parseInt(sliderHoursOne.value) <= minGapHours) {
+            sliderHoursTwo.value = parseInt(sliderHoursOne.value) + minGapHours;
+        }
+        displayValHoursTwo.textContent = formatTime(sliderHoursTwo.value);
+        fillColorHours();
+    }
+
+    function fillColorHours() {
+        console.log("fillColorHours");
+        percent1 = (sliderHoursOne.value / sliderMaxValueHours) * 100;
+        percent2 = (sliderHoursTwo.value / sliderMaxValueHours) * 100;
+        sliderTrackHours.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
+    }
+
+    function formatTime(minutes) {
+        let hours = Math.floor(minutes / 60);
+        let mins = minutes % 60;
+        return hours.toString().padStart(2, '0') + ':' + mins.toString().padStart(2, '0');
+    }
+</script>
+  *@
  
  
  
  
+ 
+ 
+ 
+ 
+
+ 
+ @* <script>
+    // Add event listener to update the displayed time range
+    document.getElementById("timeRange").addEventListener("input", function() {
+      updateSliderLabels();
+    });
+
+    function updateSliderLabels() {
+      var timeRange = document.getElementById("timeRange");
+      var startTime = document.getElementById("startTime");
+      var endTime = document.getElementById("endTime");
+
+      // Convert minutes to hours and minutes
+      var startHours = Math.floor(timeRange.value / 60);
+      var startMinutes = timeRange.value % 60;
+
+      startTime.textContent = formatTime(startHours, startMinutes);
+
+      // For the end time, use the maximum range (1439 minutes)
+      var endHours = Math.floor((1439 - timeRange.value) / 60);
+      var endMinutes = (1439 - timeRange.value) % 60;
+
+      endTime.textContent = formatTime(endHours, endMinutes);
+    }
+
+    function formatTime(hours, minutes) {
+      return hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
+    }
+  </script> *@
  
  
 

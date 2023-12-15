@@ -31,4 +31,9 @@
       <Folder Include="Views\Frontend\RecipesControllerViews\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="wwwroot\css\SliderStyleFilter.css" />
+      <None Include="wwwroot\js\script.js" />
+    </ItemGroup>
+
 </Project>
