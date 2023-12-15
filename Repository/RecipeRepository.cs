@@ -60,15 +60,19 @@ namespace Fitness_Tracker.Repository
                 }
 
                 // Ensure that the recipe contains all specified ingredients
-                filteredRecipes = filteredRecipes
-                    .Where(r => ingredientsFilter.All(ingredient => r.Macros.Any(m => m.Ingredient.IngredientName.Contains(ingredient))));
+              //  filteredRecipes = filteredRecipes
+               //     .Where(r => ingredientsFilter.All(ingredient => r.Macros.Any(m => m.Ingredient.IngredientName.Contains(ingredient))));
             }
-
-            if (cookingTimeFilter.MinMinutes != 0 && cookingTimeFilter.MinHours != 0 && cookingTimeFilter.MaxMinutes != 0 && cookingTimeFilter.MaxHours != 0)
+            if (cookingTimeFilter != null && cookingTimeFilter.MinMinutes != null && cookingTimeFilter.MinHours != null && cookingTimeFilter.MaxMinutes != null && cookingTimeFilter.MaxHours != null)
             {
-                filteredRecipes = filteredRecipes
-                    .Where(r => CookingTimeInRange(r.CookingTime, cookingTimeFilter));
+                if (cookingTimeFilter.MinMinutes != 0 && cookingTimeFilter.MinHours != 0 && cookingTimeFilter.MaxMinutes != 0 && cookingTimeFilter.MaxHours != 0)
+                {
+
+                    filteredRecipes = filteredRecipes
+                        .Where(r => CookingTimeInRange(r.CookingTime, cookingTimeFilter));
+                }
             }
+            
 
             if (!string.IsNullOrEmpty(recipeNameFilter))
             {
@@ -105,8 +109,8 @@ namespace Fitness_Tracker.Repository
                 filteredRecipes = filteredRecipes
                     .Where(r => r.Fats <= fatsFilter);
             }
-
-            return filteredRecipes.ToList();
+            var filteredRecipesList = filteredRecipes.ToList();
+            return filteredRecipesList;
         }
     }
 }
