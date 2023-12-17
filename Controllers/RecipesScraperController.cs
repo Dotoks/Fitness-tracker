@@ -57,7 +57,7 @@ public class RecipesScraperController : Controller
                 MaxMinutes = maxMinutes
             };
 
-            recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, null, null, null, null, null, null);
+            recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, null, null, null, null, null).ToList();
 
             return View(recipes);
         }

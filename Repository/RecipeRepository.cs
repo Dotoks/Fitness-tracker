@@ -20,7 +20,7 @@ namespace Fitness_Tracker.Repository
         }
         private int ParseCookingTimeToMinutes(string cookingTime)
         {
-            var regex = new Regex(@"(\d+)\s*hrs\s*(\d*)\s*mins");
+            var regex = new Regex(@"(\d+)\s*hrs?\s*(\d*)\s*mins");
 
             var match = regex.Match(cookingTime);
 
@@ -34,48 +34,53 @@ namespace Fitness_Tracker.Repository
 
             return 0;
         }
-        private bool CookingTimeInRange(string cookingTime, TimeRange range)
+        private List<Recipe> CookingTimeInRange(List<Recipe> recipes, TimeRange range)
         {
-          
-            var totalMinutes = ParseCookingTimeToMinutes(cookingTime);
-            if (totalMinutes == 0)
-            {
-                return true; // No filter applied, consider it within the range
-            }
-            var minTotalMinutes = range.MinHours * 60 + range.MinMinutes;
-            var maxTotalMinutes = range.MaxHours * 60 + range.MaxMinutes;
+            var filteredRecipes = new List<Recipe>();
 
-            return minTotalMinutes <= totalMinutes && totalMinutes <= maxTotalMinutes;
+            foreach (var recipe in recipes)
+            {
+                var totalMinutes = ParseCookingTimeToMinutes(recipe.CookingTime);
+
+                //if (totalMinutes == 0 || (range.MinMinutes == 0 && range.MinHours == 0 && range.MaxMinutes == 0 && range.MaxHours == 0))
+                //{
+                //    filteredRecipes.Add(recipe);
+                //}
+                //else
+                //{
+                    var minTotalMinutes = range.MinHours * 60 + range.MinMinutes;
+                    var maxTotalMinutes = range.MaxHours * 60 + range.MaxMinutes;
+
+                    if (minTotalMinutes <= totalMinutes && totalMinutes <= maxTotalMinutes)
+                    {
+                        filteredRecipes.Add(recipe);
+                    }
+               // }
+            }
+
+            return filteredRecipes;
         }
         public IEnumerable<Recipe> Filter(List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter)
         {
             var filteredRecipes = _db.Recipes.AsQueryable();
 
-            if (ingredientsFilter != null && ingredientsFilter.Any())
+            if (ingredientsFilter != null && ingredientsFilter.Any() && ingredientsFilter.ElementAt(0) != null)
             {
                 foreach (var ingredient in ingredientsFilter)
                 {
+                    ingredient.ToLower();
                     filteredRecipes = filteredRecipes
                         .Where(r => r.Macros.Any(m => m.Ingredient.IngredientName.Contains(ingredient)));
                 }
 
-                // Ensure that the recipe contains all specified ingredients
-              //  filteredRecipes = filteredRecipes
-               //     .Where(r => ingredientsFilter.All(ingredient => r.Macros.Any(m => m.Ingredient.IngredientName.Contains(ingredient))));
+              
             }
-            if (cookingTimeFilter != null && cookingTimeFilter.MinMinutes != null && cookingTimeFilter.MinHours != null && cookingTimeFilter.MaxMinutes != null && cookingTimeFilter.MaxHours != null)
-            {
-                if (cookingTimeFilter.MinMinutes != 0 && cookingTimeFilter.MinHours != 0 && cookingTimeFilter.MaxMinutes != 0 && cookingTimeFilter.MaxHours != 0)
-                {
-
-                    filteredRecipes = filteredRecipes
-                        .Where(r => CookingTimeInRange(r.CookingTime, cookingTimeFilter));
-                }
-            }
+            
             
 
             if (!string.IsNullOrEmpty(recipeNameFilter))
             {
+                recipeNameFilter.ToLower();
                 filteredRecipes = filteredRecipes
                     .Where(r => r.RecipeName.Contains(recipeNameFilter));
             }
@@ -110,6 +115,14 @@ namespace Fitness_Tracker.Repository
                     .Where(r => r.Fats <= fatsFilter);
             }
             var filteredRecipesList = filteredRecipes.ToList();
+            if (cookingTimeFilter != null && cookingTimeFilter.MinMinutes != null && cookingTimeFilter.MinHours != null && cookingTimeFilter.MaxMinutes != null && cookingTimeFilter.MaxHours != null)
+            {
+                if (cookingTimeFilter.MinMinutes != 0 && cookingTimeFilter.MinHours != 0 && cookingTimeFilter.MaxMinutes != 0 && cookingTimeFilter.MaxHours != 0)
+                {
+
+                    filteredRecipesList = CookingTimeInRange(filteredRecipesList, cookingTimeFilter);
+                }
+            }
             return filteredRecipesList;
         }
     }
