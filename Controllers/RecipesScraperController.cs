@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Fitness_Tracker.HelperClassesForRecipes;
 
+using X.PagedList;
+
 namespace Fitness_Tracker.Controllers;
 
 public class RecipesScraperController : Controller
@@ -43,7 +45,8 @@ public class RecipesScraperController : Controller
 
     //List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter, int? minhours
     [HttpGet]
-    public async Task<IActionResult> Index(List<string>? ingredientsFilter,int? minHours, int? minMinutes, int? maxHours, int? maxMinutes , string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter)
+    public async Task<IActionResult> Index(List<string>? ingredientsFilter,int? minHours, int? minMinutes, int? maxHours, int? maxMinutes , string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter,
+    int? page)
     {
         try
         {
@@ -59,7 +62,23 @@ public class RecipesScraperController : Controller
 
             recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter).ToList();
 
-            return View(recipes);
+
+
+            // Implement pagination
+            int itemsPerPage = 10; // Adjust the number of items per page as needed
+            int currentPage = page ?? 1;
+
+            ViewBag.CurrentPage = currentPage;
+
+            int totalItems = recipes.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+
+            // Get the recipes for the current page
+            recipes = recipes.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
+
+
+
+            return View(recipes.ToPagedList(currentPage, itemsPerPage));
         }
         catch (Exception ex)
         {

@@ -3,9 +3,10 @@
 }
 
 <h2>@ViewData["Title"]</h2>
-@model IEnumerable<Recipe>
 
 
+@model X.PagedList.IPagedList<Recipe>
+@using X.PagedList.Mvc.Core
 
  <!-- Implement frontend part for filters and pagination -->
  
@@ -84,6 +85,7 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
 
 <div id="displaySection">
     <h3>Recipes</h3>
+    
     @foreach (var recipe in Model)
     {
         <div>
@@ -114,6 +116,16 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
             <!-- Add other properties as needed -->
         </div>
     }
+
+
+    <!-- Pagination links  TODO FINISH IMPLEMENTING PAGE NAVIGATION-->
+    
+    <div id="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+           
+    </div>
+
+
 </div>
 
 

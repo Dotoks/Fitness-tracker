@@ -3095,3 +3095,6 @@ C:\Users\SZP\Desktop\All my projects\Fitness-tracker\obj\Debug\net7.0\refint\Fit
 C:\Users\SZP\Desktop\All my projects\Fitness-tracker\obj\Debug\net7.0\Fitness-Tracker.pdb
 C:\Users\SZP\Desktop\All my projects\Fitness-tracker\obj\Debug\net7.0\Fitness-Tracker.genruntimeconfig.cache
 C:\Users\SZP\Desktop\All my projects\Fitness-tracker\obj\Debug\net7.0\ref\Fitness-Tracker.dll
+C:\Users\SZP\Desktop\All my projects\Fitness-tracker\bin\Debug\net7.0\JetBrains.Annotations.dll
+C:\Users\SZP\Desktop\All my projects\Fitness-tracker\bin\Debug\net7.0\X.PagedList.dll
+C:\Users\SZP\Desktop\All my projects\Fitness-tracker\bin\Debug\net7.0\X.PagedList.Mvc.Core.dll
