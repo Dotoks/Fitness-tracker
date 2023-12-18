@@ -3,6 +3,7 @@ using Fitness_Tracker.HelperClassesForRecipes;
 using Fitness_Tracker.Models;
 using Fitness_Tracker.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
 namespace Fitness_Tracker.Repository
@@ -97,24 +98,28 @@ namespace Fitness_Tracker.Repository
                     .Where(r => r.Calories <= caloriesMaxFilter);
             }
 
+           // filteredRecipes.Include(r => r.PreparationInstructions);
+            var filteredRecipesList = filteredRecipes.ToList();
+
             if (carbsFilter.HasValue && carbsFilter > 0)
             {
-                filteredRecipes = filteredRecipes
-                    .Where(r => r.Carbohydrates <= carbsFilter);
+                filteredRecipesList = filteredRecipesList
+                    .Where(r => r.Carbohydrates <= carbsFilter).ToList();
             }
 
             if (proteinFilter.HasValue && proteinFilter > 0)
             {
-                filteredRecipes = filteredRecipes
-                    .Where(r => r.Proteins <= proteinFilter);
+                filteredRecipesList = filteredRecipesList
+                    .Where(r => r.Proteins <= proteinFilter).ToList();
             }
 
             if (fatsFilter.HasValue && fatsFilter > 0)
             {
-                filteredRecipes = filteredRecipes
-                    .Where(r => r.Fats <= fatsFilter);
+                filteredRecipesList = filteredRecipesList
+                    .Where(r => r.Fats <= fatsFilter).ToList();
             }
-            var filteredRecipesList = filteredRecipes.ToList();
+
+
             if (cookingTimeFilter != null && cookingTimeFilter.MinMinutes != null && cookingTimeFilter.MinHours != null && cookingTimeFilter.MaxMinutes != null && cookingTimeFilter.MaxHours != null)
             {
                 if (cookingTimeFilter.MinMinutes != 0 && cookingTimeFilter.MinHours != 0 && cookingTimeFilter.MaxMinutes != 0 && cookingTimeFilter.MaxHours != 0)

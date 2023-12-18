@@ -21,6 +21,7 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
         <!-- Add your filter inputs here -->
         @using (Html.BeginForm("Index", "RecipesScraper", FormMethod.Get))
         {
+
             <!-- Ingredients Filter -->
             <label for="ingredientsFilter">Ingredients:</label>
             <input id="ingredientsFilter" name="ingredientsFilter" type="text"/>
@@ -40,16 +41,37 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
             <!-- Recipe Name Filter -->
             <label for="recipeNameFilter">Name:</label>
             <input id="recipeNameFilter" name="recipeNameFilter" type="text" />
-                
+
+            <!-- Calories Min Filter -->
+            <label for="caloriesMinFilter">Minimum Calories:</label>
+            <input id="caloriesMinFilter" name="caloriesMinFilter" type="number" min="0" max="9999" />
+
+            <!-- Calories Max Filter -->
+            <label for="caloriesMaxFilter">Maximum Calories:</label>
+            <input id="caloriesMaxFilter" name="caloriesMaxFilter" type="number" min="0" max="9999" />
+
+            <!-- Carbs Max Filter -->
+            <label for="carbsFilter">Maximum Carbs:</label>
+            <input id="carbsFilter" name="carbsFilter" type="number" min="0" max="9999" />
+
+            <!-- Protein Max Filter -->
+            <label for="proteinFilter">Maximum Protein:</label>
+            <input id="proteinFilter" name="proteinFilter" type="number" min="0" max="9999" />
+
+            <!-- Fats Max Filter -->
+            <label for="fatsFilter">Maximum Fats:</label>
+            <input id="fatsFilter" name="fatsFilter" type="number" min="0" max="9999" />
 
 
 
 
-           
 
-           
-     
+
+
+
+
             <input type="submit" value="Filter">
+            Html.EndForm();
         }
       
        
@@ -60,6 +82,65 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
      
 </div>
 
+<div id="displaySection">
+    <h3>Recipes</h3>
+    @foreach (var recipe in Model)
+    {
+        <div>
+            <h4>@recipe.RecipeName</h4>
+            <p>Description: @recipe.Description</p>
+            <p>Calories: @recipe.Calories</p>
+            <p>Carbohydrates: @recipe.Carbohydrates</p>
+            <p>Proteins: @recipe.Proteins</p>
+            <p>Fats: @recipe.Fats</p>
+            <p>Cooking Time: @recipe.CookingTime</p>
+            <p>Servings: @recipe.Servings</p>
+            @if (recipe.PreparationInstructions != null && recipe.PreparationInstructions.Any())
+            {
+                <h5>Instructions:</h5>
+                <ul>
+                    @foreach (var instruction in recipe.PreparationInstructions)
+                    {
+                        <li>@instruction.InstructionName</li>
+                    }
+                </ul>
+            }
+            @if (!string.IsNullOrEmpty(recipe.DifficultyLevel))
+            {
+                <p>Difficulty Level: @recipe.DifficultyLevel</p>
+            }
+            <p>Created Date: @recipe.CreatedDate</p>
+          
+            <!-- Add other properties as needed -->
+        </div>
+    }
+</div>
+
+
+
+
+<script>
+    document.getElementById("filterForm").onsubmit = function () {
+        var minInput = document.getElementById("caloriesMinFilter");
+        var maxInput = document.getElementById("caloriesMaxFilter");
+
+        // Parse the input values as integers
+        var minCalories = parseInt(minInput.value, 10);
+        var maxCalories = parseInt(maxInput.value, 10);
+
+        // Ensure that the minimum calories are not greater than the maximum calories
+        if (minCalories > maxCalories) {
+            // Display an error message or take appropriate action
+            alert("Minimum calories cannot be greater than maximum calories.");
+
+            // Prevent the form submission
+            return false;
+        }
+
+        // Continue with the form submission
+        return true;
+    };
+</script>
 <!--   <span asp-validation-for="cookingTimeFilter.MinHours" class="text-danger"></span>  -->
 @* <div class="form-group">
                 <label>Minimum Minutes:</label>
