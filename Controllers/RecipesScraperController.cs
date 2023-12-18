@@ -68,16 +68,6 @@ public class RecipesScraperController : Controller
             int itemsPerPage = 10; // Adjust the number of items per page as needed
             int currentPage = page ?? 1;
 
-            ViewBag.CurrentPage = currentPage;
-
-            int totalItems = recipes.Count();
-            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
-
-            // Get the recipes for the current page
-            recipes = recipes.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
-
-
-
             return View(recipes.ToPagedList(currentPage, itemsPerPage));
         }
         catch (Exception ex)

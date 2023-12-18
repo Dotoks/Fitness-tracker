@@ -97,6 +97,13 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
             <p>Fats: @recipe.Fats</p>
             <p>Cooking Time: @recipe.CookingTime</p>
             <p>Servings: @recipe.Servings</p>
+            <h5>Ingredients:</h5>
+            <ul>
+                @foreach (var recipeIngredient in recipe.Macros)
+                {
+                    <li>@recipeIngredient.Ingredient.IngredientName</li>
+                }
+            </ul>
             @if (recipe.PreparationInstructions != null && recipe.PreparationInstructions.Any())
             {
                 <h5>Instructions:</h5>
@@ -107,6 +114,7 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
                     }
                 </ul>
             }
+           
             @if (!string.IsNullOrEmpty(recipe.DifficultyLevel))
             {
                 <p>Difficulty Level: @recipe.DifficultyLevel</p>

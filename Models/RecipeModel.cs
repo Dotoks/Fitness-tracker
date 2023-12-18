@@ -44,6 +44,7 @@ namespace Fitness_Tracker.Models
         [ForeignKey("CreatedBy")]
         public User Creator { get; set; }//done 
 
+        //THIS SHOULD BE CALLED INGREDIENTS
         public ICollection<RecipeIngredient> Macros { get; set; } // One-to-many relationship via the junction table
     }
 }

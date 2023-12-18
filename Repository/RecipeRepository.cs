@@ -63,7 +63,7 @@ namespace Fitness_Tracker.Repository
         }
         public IEnumerable<Recipe> Filter(List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter)
         {
-            var filteredRecipes = _db.Recipes.AsQueryable();
+            var filteredRecipes = _db.Recipes.Include(r => r.Macros).ThenInclude(ri => ri.Ingredient).Include(r => r.PreparationInstructions).AsQueryable();
 
             if (ingredientsFilter != null && ingredientsFilter.Any() && ingredientsFilter.ElementAt(0) != null)
             {
