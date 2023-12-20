@@ -4,16 +4,17 @@ html, body {
 }
 header {
     background-color: #7FB2D2;
-    min-height: 130px;
+    /*min-height: 130px;*/
     padding: 20px;
-    text-align: center;   
+    text-align: center; 
+    font-style: italic;  
     font-family:'Inter', sans-serif;
 }
 
 header h1 {
-    font-size: 2.5em; 
-    color: #f5f5dc;
-    margin: 0;  
+    font-size: 32px; 
+    color: #fff;
+    /*margin: 0; */ 
     font-family:'Inter', sans-serif;
     margin-top: 5px;
     margin-bottom: 30px;
@@ -36,7 +37,7 @@ header nav ul li {
 
 header nav ul li a {
     text-decoration: none;
-    color: #f5f5dc; 
+    color: #fff; 
     padding: 5px 10px; 
     font-size: 1.5em;  
     border-radius: 5px; 
@@ -142,6 +143,7 @@ button:hover {
 
 .form h2 {
     margin-bottom: 20px;
+    color: #fff;
 }
 .carousel-container {
     max-width: 100%;
@@ -188,4 +190,120 @@ button:hover {
 
 .next-button {
   right: 10px;
+}
+
+/*footer*/
+
+footer{
+  width: 100%;
+  height: 40%;
+  background: #7FB2D2;
+  color: #fff;
+  padding: 50px 0 30px;
+  font-size: 13px;
+  line-height: 20px;
+  font-style: italic;
+  font-family:'Inter', sans-serif;
+}
+
+footer .row{
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+footer .row .col{
+  flex-basis: 20%; /*first column uses onlu 25%*/
+  padding: 5px;
+}
+
+footer .row .col:nth-child(2){
+  flex-basis: 15%;
+}
+
+footer .row .col:nth-child(3){
+  flex-basis: 15%;
+}
+
+footer .row .col .logo{
+  width: 100px;
+  margin-bottom: 30px;
+  height: 100px;
+}
+
+footer .row .col h3{
+  width: fit-content;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+footer .row .col h4{
+  width: fit-content;
+  margin: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+footer .row .col ul li{
+  list-style-type: none;
+  margin-bottom: 12px;
+}
+
+footer .row .col ul li a{
+  text-decoration: none;
+  color: #fff;
+}
+
+footer .row .col .socials {
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  color: #000;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+hr{
+  width: 90%;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  margin: 20px auto;
+}
+
+.copyright{
+  text-align: center;
+}
+
+.underline{
+  width: 100%;
+  height: 3px;
+  background: #767676;
+  border-radius: 3px;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  overflow: hidden;
+}
+
+.underline span{
+  width: 15px;
+  height: 100%;
+  background: #fff;
+  border-radius: 3px;
+  position: absolute;
+  top:0;
+  left: 10px;
+  animation: moving 2s linear infinite; /*needs keyframes to move*/
+}
+
+@keyframes moving{
+  0%{
+      left: -20px;
+  }
+  100%{
+      left: 100%;
+  }
 }
