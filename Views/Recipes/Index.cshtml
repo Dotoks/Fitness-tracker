@@ -82,7 +82,7 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
 
 <div id="displaySection">
     <h3>Recipes</h3>
-
+    <button id="scrapeButton" class="btn btn-primary">Not Enough Recipes? Click here</button>
     @foreach (var recipe in Model)
     {
         <div>
@@ -134,7 +134,25 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
 </div>
 
 
-
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#scrapeButton").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ScrapeData", "RecipesScraper")',
+                    success: function (data) {
+                        alert("Scraping completed successfully!");
+                        // Optionally, refresh the page or update part of your page here
+                    },
+                    error: function (error) {
+                        alert("Error occurred during scraping!");
+                    }
+                });
+            });
+        });
+    </script>
+}
 
 <script>
     document.getElementById("filterForm").onsubmit = function () {

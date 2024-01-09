@@ -35,7 +35,7 @@ namespace Fitness_Tracker.Controllers
             try
             {
                 var scraperController = new RecipesScraperController(_unitOfWork, _recipeRepository, userManager, _userRepository);
-                await scraperController.ScrapeData();
+               // await scraperController.ScrapeData();
                 IEnumerable<Recipe> recipes;
                 TimeRange? cookingTimeFilter = new TimeRange // Make Default values  00:00 and 23:59
                 {
