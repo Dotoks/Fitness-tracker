@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\Repos\\Fitness-tracker\\Fitness-Tracker.csproj": {}
+    "C:\\Users\\User\\source\\repos\\Fitness-tracker\\Fitness-Tracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\Repos\\Fitness-tracker\\Fitness-Tracker.csproj": {
+    "C:\\Users\\User\\source\\repos\\Fitness-tracker\\Fitness-Tracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\Fitness-tracker\\Fitness-Tracker.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Fitness-tracker\\Fitness-Tracker.csproj",
         "projectName": "Fitness-Tracker",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\Fitness-tracker\\Fitness-Tracker.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\Fitness-tracker\\Fitness-Tracker.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\Fitness-tracker\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\Fitness-tracker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
