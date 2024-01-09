@@ -7,22 +7,59 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Fitness_Tracker.Repository.IRepository;
 using Fitness_Tracker.Repository;
+using Fitness_Tracker.HelperClassesForRecipes;
+using X.PagedList;
 
 namespace Fitness_Tracker.Controllers
 {
     public class RecipesController : Controller
     {
         private readonly IRecipesService recipesService;
+        private readonly IRecipeRepository _recipeRepository;
         private readonly UserManager<IdentityUser> userManager;
-        public RecipesController(IRecipesService recipesServices, UserManager<IdentityUser> userManager)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserRepository _userRepository;
+        public RecipesController(IRecipesService recipesServices, IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, UserManager<IdentityUser> userManager, IUserRepository userRepository)
         {
             this.recipesService = recipesServices;
             this.userManager = userManager;
+            _unitOfWork = unitOfWork;
+            _recipeRepository = recipeRepository;
+            _userRepository = userRepository;
         }
         // GET: RecipesController
-        public ActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(List<string>? ingredientsFilter, int? minHours, int? minMinutes, int? maxHours, int? maxMinutes, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter,
+            int? page)
         {
-            return View();
+            try
+            {
+                var scraperController = new RecipesScraperController(_unitOfWork, _recipeRepository, userManager, _userRepository);
+                await scraperController.ScrapeData();
+                IEnumerable<Recipe> recipes;
+                TimeRange? cookingTimeFilter = new TimeRange // Make Default values  00:00 and 23:59
+                {
+                    MinHours = minHours,
+                    MinMinutes = minMinutes,
+                    MaxHours = maxHours,
+                    MaxMinutes = maxMinutes
+                };
+
+                recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter).ToList();
+
+
+
+                // Implement pagination
+                int itemsPerPage = 10; // Adjust the number of items per page as needed
+                int currentPage = page ?? 1;
+
+                return View(recipes.ToPagedList(currentPage, itemsPerPage));
+            }
+            catch (Exception ex)
+            {
+
+                return View("Error");
+            }
         }
 
         // GET: RecipesController/Details/5

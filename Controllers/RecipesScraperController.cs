@@ -36,6 +36,7 @@ public class RecipesScraperController : Controller
     }
 
 
+
     //This is not fully implemented, in order for it to work correctly, you should use AJAX 
     //Use JavaScript to update the content on the page dynamically when the AJAX response is received.
     //Replace the existing list of recipes with the updated list based on the user's filter criteria.
@@ -44,38 +45,39 @@ public class RecipesScraperController : Controller
 
 
     //List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter, int? minhours
-    [HttpGet]
-    public async Task<IActionResult> Index(List<string>? ingredientsFilter,int? minHours, int? minMinutes, int? maxHours, int? maxMinutes , string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter,
-    int? page)
-    {
-        try
-        {
-            await ScrapeData();
-            IEnumerable<Recipe> recipes;
-            TimeRange? cookingTimeFilter = new TimeRange // Make Default values  00:00 and 23:59
-            {
-                MinHours = minHours,
-                MinMinutes = minMinutes,
-                MaxHours = maxHours,
-                MaxMinutes = maxMinutes
-            };
+    //[HttpGet]
+    //public async Task<IActionResult> Index(List<string>? ingredientsFilter,int? minHours, int? minMinutes, int? maxHours, int? maxMinutes , string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter,
+    //int? page)
+    //{
+    //    try
+    //    {
+    //        await ScrapeData();
+    //        IEnumerable<Recipe> recipes;
+    //        TimeRange? cookingTimeFilter = new TimeRange // Make Default values  00:00 and 23:59
+    //        {
+    //            MinHours = minHours,
+    //            MinMinutes = minMinutes,
+    //            MaxHours = maxHours,
+    //            MaxMinutes = maxMinutes
+    //        };
 
-            recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter).ToList();
+    //        recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter).ToList();
 
 
 
-            // Implement pagination
-            int itemsPerPage = 10; // Adjust the number of items per page as needed
-            int currentPage = page ?? 1;
+    //        // Implement pagination
+    //        int itemsPerPage = 10; // Adjust the number of items per page as needed
+    //        int currentPage = page ?? 1;
 
-            return View(recipes.ToPagedList(currentPage, itemsPerPage));
-        }
-        catch (Exception ex)
-        {
-          
-            return View("Error"); 
-        }
-    }
+    //        return View(recipes.ToPagedList(currentPage, itemsPerPage));
+    //    }
+    //    catch (Exception ex)
+    //    {
+
+    //        return View("Error"); 
+    //    }
+    //}
+
 
 
 
