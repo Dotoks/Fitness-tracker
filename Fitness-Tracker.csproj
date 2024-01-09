@@ -8,6 +8,24 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="wwwroot\NewFolder\**" />
+      <Content Remove="wwwroot\NewFolder\**" />
+      <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+      <None Remove="wwwroot\NewFolder\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="wwwroot\css\Images\facebook-icon.png" />
+      <Content Remove="wwwroot\css\Images\fitness.png" />
+      <Content Remove="wwwroot\css\Images\image1.jpg" />
+      <Content Remove="wwwroot\css\Images\image2.jpg" />
+      <Content Remove="wwwroot\css\Images\image3.jpg" />
+      <Content Remove="wwwroot\css\Images\instagram-icon.png" />
+      <Content Remove="wwwroot\css\Images\x-icon.png" />
+      <Content Remove="wwwroot\css\style.css" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="CsvHelper" Version="30.0.1" />
       <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.12" />
@@ -33,7 +51,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="wwwroot\css\Images\facebook-icon.png" />
+      <None Include="wwwroot\css\Images\fitness.png" />
+      <None Include="wwwroot\css\Images\image1.jpg" />
+      <None Include="wwwroot\css\Images\image2.jpg" />
+      <None Include="wwwroot\css\Images\image3.jpg" />
+      <None Include="wwwroot\css\Images\instagram-icon.png" />
+      <None Include="wwwroot\css\Images\x-icon.png" />
       <None Include="wwwroot\css\SliderStyleFilter.css" />
+      <None Include="wwwroot\css\style.css" />
       <None Include="wwwroot\js\script.js" />
     </ItemGroup>
 
