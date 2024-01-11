@@ -169,7 +169,7 @@ button:hover {
   
   
   img {
-    width: 100%;
+    width: 70px;
     height: auto;
   }
   
@@ -200,7 +200,7 @@ button:hover {
 }
 
 .pricing-container {
-    background-color: #DFDDDD;
+    background-image: linear-gradient(135deg, #c8c6c6, #a0d8ef);
     width: 100%;
 }
 
@@ -253,6 +253,7 @@ button:hover {
 .pricing-card-title {
     display: flex;
     align-items: baseline;
+    justify-content: center;
 }
 
 .list-unstyled {
@@ -281,7 +282,8 @@ button:hover {
     padding: 5rem;
     /*width: 100%;    */
     text-align: center;
-    background-color: #DFDDDD;
+    background-color: #c8c6c6; 
+    background-image: linear-gradient(135deg, #c8c6c6, #a0d8ef);
 }
 
 .testimonial-content {
@@ -298,7 +300,10 @@ button:hover {
     margin-top: 50px;
     width: 170px;
     height: 160px;
+    object-fit: cover;
     border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #F0FFFF;
 }
 
 .testimonial-author {
