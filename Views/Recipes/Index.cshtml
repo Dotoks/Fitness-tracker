@@ -90,44 +90,46 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
     @foreach (var recipe in Model)
     {
         <div class="sections">
-            <h4>@recipe.RecipeName</h4>
+            <h4 class="recipe-name">@recipe.RecipeName</h4>
             <div class="recipe_details">
-                <div class="description_ingredients_instructions">
-                    <p>Description: @recipe.Description</p>
+                <div class="description">
+                    <p> <b>Description:</b> @recipe.Description</p>
+                    <p> <b>Calories:</b>@recipe.Calories</p>
+                    <p> <b>Carbohydrates:</b> @recipe.Carbohydrates</p>
+                    <p> <b>Proteins:</b> @recipe.Proteins</p>
+                    <p> <b>Fats:</b> @recipe.Fats</p>
+                    <p> <b>Cooking Time:</b> @recipe.CookingTime</p>
+                    <p> <b>Servings:</b> @recipe.Servings</p>
                 </div>
-                <p>Calories: @recipe.Calories</p>
-                <p>Carbohydrates: @recipe.Carbohydrates</p>
-                <p>Proteins: @recipe.Proteins</p>
-                <p>Fats: @recipe.Fats</p>
-                <p>Cooking Time: @recipe.CookingTime</p>
-                <p>Servings: @recipe.Servings</p>
-                <div class="description_ingredients_instructions">
-                    <h5>Ingredients:</h5>
-                </div>
-                <ul>
+
+                <div class="ingredients">
+                    <h5><b>Ingredients:</b></h5>
+                
+                <ol class="bold-numbers">
                     @foreach (var recipeIngredient in recipe.Macros)
                     {
                         <li>@recipeIngredient.Ingredient.IngredientName</li>
                     }
-                </ul>
+                </ol>
+                </div>
                 @if (recipe.PreparationInstructions != null && recipe.PreparationInstructions.Any())
                 {
-                    <div class="description_ingredients_instructions">
-                        <h5>Instructions:</h5>
-                    </div>
-                    <ul>
+                    <div class="instructions">
+                        <h5><b>Instructions:</b></h5>
+                    <ol class="bold-numbers">
                         @foreach (var instruction in recipe.PreparationInstructions)
                         {
                             <li>@instruction.InstructionName</li>
                         }
-                    </ul>
+                    </ol>
+                    </div>
                 }
 
                 @if (!string.IsNullOrEmpty(recipe.DifficultyLevel))
                 {
                     <p>Difficulty Level: @recipe.DifficultyLevel</p>
                 }
-                <p>Created Date: @recipe.CreatedDate</p>
+                <p> <b>Created Date: @recipe.CreatedDate</b></p>
             </div>
 
             <!-- Add other properties as needed -->
