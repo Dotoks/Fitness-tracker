@@ -2,7 +2,7 @@
     ViewData["Title"] = "Scraped Meals";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2 class="header">@ViewData["Title"]</h2>
 
 
 @model X.PagedList.IPagedList<Recipe>
@@ -14,61 +14,65 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
 
 
 <div id="filterSection">
-    <h3>Filter Recipes</h3>
+    <h3 class="filters-heading">Filter Recipes</h3>
     <form id="filterForm">
         <!-- Add your filter inputs here -->
         @using (Html.BeginForm("Index", "Recipes", FormMethod.Get))
         {
+            <div class="form-sections">
 
-            <!-- Ingredients Filter -->
-            <label for="ingredientsFilter">Ingredients:</label>
-            <input id="ingredientsFilter" name="ingredientsFilter" type="text" />
+                <!-- Recipe Name Filter -->
+                <label for="recipeNameFilter" class="filters_style">Name:</label>
+                <input id="recipeNameFilter" name="recipeNameFilter" type="text" />
 
-            <!-- Cooking Time Filter -->
-            <label for="minHours">MinHours:</label>
-            <input id="minHours" name="minHours" type="number" step="1" />
+                <!-- Ingredients Filter -->
+                <label for="ingredientsFilter" class="filters_style">Ingredients:</label>
+                <input id="ingredientsFilter" name="ingredientsFilter" type="text" />
 
-            <label for="minMinutes">MinMinutes:</label>
-            <input id="minMinutes" name="minMinutes" type="number" step="1" />
+            </div>
 
-            <label for="maxHours">MaxHours:</label>
-            <input id="maxHours" name="maxHours" type="number" step="1" />
+            <div class="form-sections">
+                <!-- Cooking Time Filter -->
+                <label for="minHours" class="filters_style">MinHours:</label>
+                <input id="minHours" name="minHours" type="number" step="1" />
 
-            <label for="maxMinutes">MaxMinutes:</label>
-            <input id="maxMinutes" name="maxMinutes" type="number" step="1" />
-            <!-- Recipe Name Filter -->
-            <label for="recipeNameFilter">Name:</label>
-            <input id="recipeNameFilter" name="recipeNameFilter" type="text" />
+                <label for="minMinutes" class="filters_style">MinMinutes:</label>
+                <input id="minMinutes" name="minMinutes" type="number" step="1" />
 
-            <!-- Calories Min Filter -->
-            <label for="caloriesMinFilter">Minimum Calories:</label>
-            <input id="caloriesMinFilter" name="caloriesMinFilter" type="number" min="0" max="9999" />
+                <label for="maxHours" class="filters_style">MaxHours:</label>
+                <input id="maxHours" name="maxHours" type="number" step="1" />
 
-            <!-- Calories Max Filter -->
-            <label for="caloriesMaxFilter">Maximum Calories:</label>
-            <input id="caloriesMaxFilter" name="caloriesMaxFilter" type="number" min="0" max="9999" />
-
-            <!-- Carbs Max Filter -->
-            <label for="carbsFilter">Maximum Carbs:</label>
-            <input id="carbsFilter" name="carbsFilter" type="number" min="0" max="9999" />
-
-            <!-- Protein Max Filter -->
-            <label for="proteinFilter">Maximum Protein:</label>
-            <input id="proteinFilter" name="proteinFilter" type="number" min="0" max="9999" />
-
-            <!-- Fats Max Filter -->
-            <label for="fatsFilter">Maximum Fats:</label>
-            <input id="fatsFilter" name="fatsFilter" type="number" min="0" max="9999" />
+                <label for="maxMinutes" class="filters_style">MaxMinutes:</label>
+                <input id="maxMinutes" name="maxMinutes" type="number" step="1" />
+            </div>
 
 
+            <div class="form-sections">
+                <!-- Calories Min Filter -->
+                <label for="caloriesMinFilter" class="filters_style">Minimum Calories:</label>
+                <input id="caloriesMinFilter" name="caloriesMinFilter" type="number" min="0" max="9999" />
+
+                <!-- Calories Max Filter -->
+                <label for="caloriesMaxFilter" class="filters_style">Maximum Calories:</label>
+                <input id="caloriesMaxFilter" name="caloriesMaxFilter" type="number" min="0" max="9999" />
+
+                <!-- Carbs Max Filter -->
+                <label for="carbsFilter" class="filters_style">Maximum Carbs:</label>
+                <input id="carbsFilter" name="carbsFilter" type="number" min="0" max="9999" />
+
+                <!-- Protein Max Filter -->
+                <label for="proteinFilter" class="filters_style">Maximum Protein:</label>
+                <input id="proteinFilter" name="proteinFilter" type="number" min="0" max="9999" />
+
+                <!-- Fats Max Filter -->
+                <label for="fatsFilter" class="filters_style">Maximum Fats:</label>
+                <input id="fatsFilter" name="fatsFilter" type="number" min="0" max="9999" />
+            </div>
 
 
 
+            <input id="filter-btn" type="submit" value="Filter">
 
-
-
-
-            <input type="submit" value="Filter">
             Html.EndForm();
         }
 
@@ -81,42 +85,50 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
 </div>
 
 <div id="displaySection">
-    <h3>Recipes</h3>
+    <h3 class="recipes-heading">Recipes</h3>
     <button id="scrapeButton" class="btn btn-primary">Not Enough Recipes? Click here</button>
     @foreach (var recipe in Model)
     {
-        <div>
+        <div class="sections">
             <h4>@recipe.RecipeName</h4>
-            <p>Description: @recipe.Description</p>
-            <p>Calories: @recipe.Calories</p>
-            <p>Carbohydrates: @recipe.Carbohydrates</p>
-            <p>Proteins: @recipe.Proteins</p>
-            <p>Fats: @recipe.Fats</p>
-            <p>Cooking Time: @recipe.CookingTime</p>
-            <p>Servings: @recipe.Servings</p>
-            <h5>Ingredients:</h5>
-            <ul>
-                @foreach (var recipeIngredient in recipe.Macros)
-                {
-                    <li>@recipeIngredient.Ingredient.IngredientName</li>
-                }
-            </ul>
-            @if (recipe.PreparationInstructions != null && recipe.PreparationInstructions.Any())
-            {
-                <h5>Instructions:</h5>
+            <div class="recipe_details">
+                <div class="description_ingredients_instructions">
+                    <p>Description: @recipe.Description</p>
+                </div>
+                <p>Calories: @recipe.Calories</p>
+                <p>Carbohydrates: @recipe.Carbohydrates</p>
+                <p>Proteins: @recipe.Proteins</p>
+                <p>Fats: @recipe.Fats</p>
+                <p>Cooking Time: @recipe.CookingTime</p>
+                <p>Servings: @recipe.Servings</p>
+                <div class="description_ingredients_instructions">
+                    <h5>Ingredients:</h5>
+                </div>
                 <ul>
-                    @foreach (var instruction in recipe.PreparationInstructions)
+                    @foreach (var recipeIngredient in recipe.Macros)
                     {
-                        <li>@instruction.InstructionName</li>
+                        <li>@recipeIngredient.Ingredient.IngredientName</li>
                     }
                 </ul>
-            }
+                @if (recipe.PreparationInstructions != null && recipe.PreparationInstructions.Any())
+                {
+                    <div class="description_ingredients_instructions">
+                        <h5>Instructions:</h5>
+                    </div>
+                    <ul>
+                        @foreach (var instruction in recipe.PreparationInstructions)
+                        {
+                            <li>@instruction.InstructionName</li>
+                        }
+                    </ul>
+                }
 
-            @if (!string.IsNullOrEmpty(recipe.DifficultyLevel))
-            {
-                <p>Difficulty Level: @recipe.DifficultyLevel</p>
-            }
-            <p>Created Date: @recipe.CreatedDate</p>
+                @if (!string.IsNullOrEmpty(recipe.DifficultyLevel))
+                {
+                    <p>Difficulty Level: @recipe.DifficultyLevel</p>
+                }
+                <p>Created Date: @recipe.CreatedDate</p>
+            </div>
 
             <!-- Add other properties as needed -->
         </div>
