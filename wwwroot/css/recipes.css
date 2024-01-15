@@ -149,3 +149,31 @@
         #pagination a:hover {
             background-color: #f5f5f5;
         }
+
+
+/*button scroll*/
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px; /* Adjust this value to vertically center the icon */
+}
+
+    #scrollToTopBtn:hover {
+        background-color: #e0e0e0;
+    }
+
+    /* Assuming you're using Font Awesome, adjust the styles accordingly */
+    #scrollToTopBtn i {
+        color: black; /* Adjust the color of your icon */
+        font-size: 20px; /* Adjust the size of your icon */
+    }

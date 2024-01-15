@@ -144,6 +144,7 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
 
     </div>
 
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
 
 </div>
 
@@ -190,6 +191,28 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
         return true;
     };
 </script>
+
+<!--script for scroll button-->
+<script src="https://kit.fontawesome.com/7fe02f3d8e.js" crossorigin="anonymous"></script>
+<script>
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    }
+
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
 <!--   <span asp-validation-for="cookingTimeFilter.MinHours" class="text-danger"></span>  -->
 @* <div class="form-group">
                 <label>Minimum Minutes:</label>
