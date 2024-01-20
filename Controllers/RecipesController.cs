@@ -17,13 +17,15 @@ namespace Fitness_Tracker.Controllers
         private readonly IRecipesService recipesService;
         private readonly IRecipeRepository _recipeRepository;
         private readonly UserManager<IdentityUser> userManager;
+        private readonly IBodyRepository _bodyRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserRepository _userRepository;
-        public RecipesController(IRecipesService recipesServices, IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, UserManager<IdentityUser> userManager, IUserRepository userRepository)
+        public RecipesController(IRecipesService recipesServices, IUnitOfWork unitOfWork, IRecipeRepository recipeRepository, UserManager<IdentityUser> userManager, IBodyRepository bodyRepository, IUserRepository userRepository)
         {
             this.recipesService = recipesServices;
             this.userManager = userManager;
             _unitOfWork = unitOfWork;
+            _bodyRepository = bodyRepository;
             _recipeRepository = recipeRepository;
             _userRepository = userRepository;
         }
@@ -142,6 +144,36 @@ namespace Fitness_Tracker.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        public ActionResult AddToDailyMacros(int recipeId)
+        {
+            // Get the selected recipe based on the provided recipeId
+            Recipe selectedRecipe = _recipeRepository.GetRecipeById(recipeId);
+            var userId = userManager.GetUserId(this.User);
+
+            // Get the user's body information (you need to implement this part based on your logic)
+            Body userBody = _bodyRepository.GetUserBody(userId);
+
+            // Update the daily macros based on the selected recipe
+            UpdateDailyMacros(userBody.DailyMacros, selectedRecipe);
+
+            // Save the changes to your data store or database
+            _bodyRepository.SaveChanges();
+
+            // Redirect or refresh the page as needed
+            return RedirectToAction("Index");
+        }
+
+        private void UpdateDailyMacros(DailyMacros dailyMacros, Recipe recipeMacros)
+        {
+            // Update the daily macros
+            dailyMacros.CaloriesConsumed += (int)recipeMacros.Calories;
+            dailyMacros.ProteinsConsumed += (int)recipeMacros.Proteins;
+            dailyMacros.CarbohydratesConsumed += (int)recipeMacros.Carbohydrates;
+            dailyMacros.FatsConsumed += (int)recipeMacros.Fats;
+            // Update other macro properties as needed
         }
     }
 }

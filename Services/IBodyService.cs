@@ -1,4 +1,5 @@
-﻿using Fitness_Tracker.ViewModels.Body;
+﻿using Fitness_Tracker.Models;
+using Fitness_Tracker.ViewModels.Body;
 
 namespace Fitness_Tracker.Services
 {
@@ -8,7 +9,7 @@ namespace Fitness_Tracker.Services
 
         int GetCount();
 
-        Body GetBody<Body>(string userId);
+        Body GetBody(string userId);
 
         Task DeleteAsync(int id);
     }

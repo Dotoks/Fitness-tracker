@@ -24,5 +24,10 @@ namespace Fitness_Tracker.ViewModels.Recipes
         public int Servings { get; set; }
 
         public string DifficultyLevel { get; set; }
+
+        public decimal Calories { get; set; }
+        public decimal Carbohydrates { get; set; }
+        public decimal Proteins { get; set; }
+        public decimal Fats { get; set; }
     }
 }

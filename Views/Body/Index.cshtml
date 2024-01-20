@@ -1,0 +1,25 @@
+﻿<!-- Display user information and daily macros as needed -->
+<h3>User Information</h3>
+<p>UserID: @Model.UserBody.UserID</p>
+
+<h3>Daily Macros</h3>
+<p>Calories Consumed: @Model.UserBody.DailyMacros.CaloriesConsumed</p>
+<p>Proteins Consumed: @Model.UserBody.DailyMacros.ProteinsConsumed</p>
+<p>Fats Consumed: @Model.UserBody.DailyMacros.FatsConsumed</p>
+<p>Carbohydrates Consumed: @Model.UserBody.DailyMacros.CarbohydratesConsumed</p>
+
+<!-- Display calculated total calories and total macros -->
+<h3>Total Calories</h3>
+<p>Total Calories Consumed: @Model.TotalCaloriesConsumed</p>
+<p>Total Calories Recommended: @Model.TotalCaloriesRecommended</p>
+
+<h3>Total Macros</h3>
+<p>Total Proteins Consumed: @Model.TotalProteinsConsumed</p>
+<p>Total Fats Consumed: @Model.TotalFatsConsumed</p>
+<p>Total Carbohydrates Consumed: @Model.TotalCarbohydratesConsumed</p>
+
+<p>Total Proteins Recommended: @Model.TotalProteinsRecommended</p>
+<p>Total Fats Recommended: @Model.TotalFatsRecommended</p>
+<p>Total Carbohydrates Recommended: @Model.TotalCarbohydratesRecommended</p>
+
+<!-- Add other display elements as needed -->

@@ -15,6 +15,9 @@ namespace Fitness_Tracker.Models
         [ForeignKey("UserID")] // This creates the Foreign Key for the User table
         public User User { get; set; }
 
+        [Required]
+        public DailyMacros DailyMacros { get; set; }
+
         // This table will be SCD 2
         public DateTime EffectiveFromDate { get; set; }
 

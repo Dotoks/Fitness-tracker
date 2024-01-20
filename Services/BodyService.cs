@@ -44,6 +44,7 @@ namespace Fitness_Tracker.Services
             };
 
             await _context.AddAsync(body);
+            
             await _context.SaveChangesAsync();
         }
 
@@ -52,11 +53,11 @@ namespace Fitness_Tracker.Services
             throw new NotImplementedException();
         }
 
-        public Body GetBody<Body>(string userId)
+        public Body GetBody(string userId)
         {
-            var currentBody = _context.Bodies.Where(x => x.UserID == userId && x.EffectiveThroughDate == DateTime.MaxValue).FirstOrDefault();
-
-            throw new NotImplementedException();
+            return _context.Bodies
+                   .Include(b => b.DailyMacros)
+                   .FirstOrDefault(x => x.UserID == userId && x.EffectiveThroughDate == DateTime.MaxValue);
         }
 
         public int GetCount()

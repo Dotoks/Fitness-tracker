@@ -11,6 +11,10 @@ namespace Fitness_Tracker.Repository.IRepository
         void Update(Recipe obj);
 
         public IEnumerable<Recipe> Filter(List<string>? ingredientsFilter, TimeRange? cookingTimeFilter, string? recipeNameFilter, int? caloriesMinFilter, int? caloriesMaxFilter, int? carbsFilter, int? proteinFilter, int? fatsFilter);
+
+        public List<Recipe> GetRecipes();
+
+        public Recipe GetRecipeById(int recipeId);
     }
 }
 //[Key]

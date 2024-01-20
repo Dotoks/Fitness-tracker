@@ -133,6 +133,11 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
             </div>
 
             <!-- Add other properties as needed -->
+            @using (Html.BeginForm("AddToDailyMacros", "Recipes", FormMethod.Post, new { id = $"addToDailyMacrosForm{recipe.RecipeID}", @class = "addToDailyMacrosForm" }))
+            {
+                @Html.Hidden("recipeId", recipe.RecipeID)
+                <input type="submit" value="Add to Daily Macros" class="addToDailyMacrosButton" />
+            }
         </div>
     }
 
@@ -211,6 +216,31 @@ recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilt
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".addToDailyMacrosForm").submit(function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var form = $(this);
+
+            $.ajax({
+                url: form.attr("action"),
+                method: form.attr("method"),
+                data: form.serialize(),
+                success: function (data) {
+                    // Handle success if needed
+                    console.log("Data submitted successfully");
+                },
+                error: function (error) {
+                    // Handle errors if needed
+                    console.error("Error submitting data", error);
+                }
+            });
+        });
+    });
 </script>
 <!--   <span asp-validation-for="cookingTimeFilter.MinHours" class="text-danger"></span>  -->
 @* <div class="form-group">

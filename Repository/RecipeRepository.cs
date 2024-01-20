@@ -130,5 +130,14 @@ namespace Fitness_Tracker.Repository
             }
             return filteredRecipesList;
         }
+        public List<Recipe> GetRecipes()
+        {
+            return _db.Recipes.ToList(); 
+        }
+
+        public Recipe GetRecipeById(int recipeId)
+        {
+            return _db.Recipes.FirstOrDefault(r => r.RecipeID == recipeId);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Fitness_Tracker.Services;
+﻿using Fitness_Tracker.Models;
+using Fitness_Tracker.Services;
 using Fitness_Tracker.ViewModels.Body;
 using Fitness_Tracker.ViewModels.Recipes;
 using Microsoft.AspNetCore.Http;
@@ -21,7 +22,45 @@ namespace Fitness_Tracker.Controllers
         // GET: BodyController
         public ActionResult Index()
         {
-            return View();
+            var userId = userManager.GetUserId(this.User);
+            Body userBody = bodiesService.GetBody(userId);
+
+            if (userBody != null && userBody.DailyMacros != null)
+            {
+                // Calculate total macros consumed and recommended
+                int totalCaloriesConsumed = userBody.DailyMacros.CaloriesConsumed;
+                int totalCaloriesRecommended = userBody.DailyMacros.CaloriesRecommended;
+
+                int totalProteinsConsumed = userBody.DailyMacros.ProteinsConsumed;
+                int totalFatsConsumed = userBody.DailyMacros.FatsConsumed;
+                int totalCarbohydratesConsumed = userBody.DailyMacros.CarbohydratesConsumed;
+
+                int totalProteinsRecommended = userBody.DailyMacros.ProteinsRecommended;
+                int totalFatsRecommended = userBody.DailyMacros.FatsRecommended;
+                int totalCarbohydratesRecommended = userBody.DailyMacros.CarbohydratesRecommended;
+
+                // Create an instance of BodyIndexViewModel
+                var viewModel = new BodyIndexViewModel
+                {
+                    UserBody = userBody,
+                    TotalCaloriesConsumed = totalCaloriesConsumed,
+                    TotalCaloriesRecommended = totalCaloriesRecommended,
+                    TotalProteinsConsumed = totalProteinsConsumed,
+                    TotalFatsConsumed = totalFatsConsumed,
+                    TotalCarbohydratesConsumed = totalCarbohydratesConsumed,
+                    TotalProteinsRecommended = totalProteinsRecommended,
+                    TotalFatsRecommended = totalFatsRecommended,
+                    TotalCarbohydratesRecommended = totalCarbohydratesRecommended
+                    // Add other properties as needed
+                };
+
+                return View(viewModel);
+            }
+            else
+            {
+                // Handle the case where userBody or userBody.DailyMacros is null
+                return View("Error"); // You can customize the error view
+            }
         }
 
         // GET: BodyController/Details/5

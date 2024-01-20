@@ -18,7 +18,7 @@ namespace Fitness_Tracker.Services
         public async Task CreateAsync(string userId, decimal weight, decimal height, int age, string acitivtyLevel, string gender)
         {
 
-            var currentBody = _context.Bodies.FirstOrDefault(x => x.UserID == userId);
+            var currentBody = _context.Bodies.FirstOrDefault(b => b.UserID == userId && b.EffectiveThroughDate == DateTime.MaxValue);
 
             double BMR = 0;
 
@@ -109,6 +109,18 @@ namespace Fitness_Tracker.Services
 
            throw new NotImplementedException();
 
+        }
+
+        public Task UpdateMacrosId(int bodyId)
+        {
+            var existingDailyMacros = _context.DailyMacros.FirstOrDefault(dm => dm.BodyId == bodyId);
+            existingDailyMacros.BodyId = bodyId;
+
+            _context.Update(existingDailyMacros);
+
+            _context.SaveChangesAsync();
+
+            return Task.CompletedTask;
         }
     }
 }
