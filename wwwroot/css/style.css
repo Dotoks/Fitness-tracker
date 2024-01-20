@@ -165,14 +165,11 @@ button:hover {
   }
   .slide img {
     width: 100%;
-  }
-  
-  
+  }  
   img {
-    width: 70px;
+    width: 50px;
     height: auto;
   }
-  
 .prev-button,
 .next-button {
   position: absolute;
