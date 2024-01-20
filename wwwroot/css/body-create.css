@@ -4,15 +4,14 @@
     margin: 0;
 }
 
-.row-register {
+.row-create-body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100;
-    margin-bottom: 10px;
-    background-image: url('Images/bg-food-2.jpg');
+    background-image: url('Images/bg-food.jpg');
     background-repeat: repeat-x;
     background-size: auto;
+    align-items: center;
+    height: 100;
 }
 
 .col-md-4 {
@@ -25,7 +24,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1, h4 {
     text-align: center;
     margin-bottom: 10px;
 }
@@ -35,10 +34,9 @@ h1 {
     font-style: italic;
 }
 
-h2 {
+h4 {
     font-size: 25px;
 }
-
 
 form {
     margin-top: 10px;
@@ -48,48 +46,28 @@ form {
     align-items: center;
 }
 
-.form-floating {
-    position: relative;
-    margin-bottom: 1rem;
+.form-group {
     width: 100%;
+    margin-bottom: 1rem;
 }
 
-.form-floating input {
+    .form-group label {
+        font-weight: bold;
+    }
+
+.form-control {
     width: 100%;
-    max-width: 400px;
     padding: 0.5rem;
     border: 1px solid #ced4da;
     border-radius: 4px;
 }
 
-.form-floating label {
-    position: absolute;
-    top: 0.25rem;
-    left: 0.5rem;
-    font-size: 0.8rem;
-    color: #495057;
-    padding: 0 0.25rem;
-    z-index: 1;
-}
-
-.register-nav {
+.text-danger {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-.register-nav a {
-    color: #4594b5;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 16px;
-}
-
-.register-nav a:hover {
-    color: #215d75;
-    text-decoration: underline;
-}
-
-#registerSubmit {
+.btn-primary {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,14 +79,26 @@ form {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
-#registerSubmit:hover {
-    background-color: #215d75;
+    .btn-primary:hover {
+        background-color: #215d75;
+    }
+
+.back-to-list {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.text-danger {
-    text-align: center; 
-    margin-top: 10px; 
-}
+    .back-to-list a {
+        color: #4594b5;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 16px;
+    }
+
+        .back-to-list a:hover {
+            color: #215d75;
+            text-decoration: underline;
+        }

@@ -10,6 +10,9 @@
     align-items: center;
     height: 100;
     margin-bottom: 10px;
+    background-image: url('Images/bg-food-3.jpg');
+    background-repeat: repeat-x;
+    background-size: auto;
 }
 
 .col-md-4 {

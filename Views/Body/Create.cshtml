@@ -2,12 +2,17 @@
 @{
     ViewData["Title"] = "Create";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/body-create.css" asp-append-version="true" />
+</head>
+<body>
 
-<h1>Create</h1>
+<h1>Create your dream body</h1>
 
-<h4>Body</h4>
-<hr />
-<div class="row">
+<h4>Enter your measurements</h4>
+<div class="row-create-body">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -54,7 +59,8 @@
         </form>
     </div>
 </div>
-
 <div>
-    <a asp-action="Index">Back to List</a>
+   <!-- <a asp-action="Index">Back to List</a>-->
 </div>
+</body>
+</html>
