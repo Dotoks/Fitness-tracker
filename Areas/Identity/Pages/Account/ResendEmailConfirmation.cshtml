@@ -4,10 +4,16 @@
     ViewData["Title"] = "Resend email confirmation";
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/user-profile.css" asp-append-version="true" />
+</head>
+<body>
 <h1>@ViewData["Title"]</h1>
-<h2>Enter your email.</h2>
+<h2>Enter your email</h2>
 <hr />
-<div class="row">
+<div class="row-user-form">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="All" class="text-danger" role="alert"></div>
@@ -20,6 +26,7 @@
         </form>
     </div>
 </div>
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
