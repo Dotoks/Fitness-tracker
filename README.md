@@ -86,4 +86,5 @@ We welcome contributions to enhance Fitness-tracker. Follow these steps to contr
 4. Open a pull request
 
 ## Current Database Diagram
-![Untitled](https://github.com/Dotoks/Fitness-tracker/assets/53398611/fd1c24d6-5f36-4d8a-961a-c9243954d47f)
+![db fitness tracker](https://github.com/IskrenVanev/Fitness-tracker/assets/75131691/3f181102-ed71-4ad5-9971-0eba2e82a565)
+
