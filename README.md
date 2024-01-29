@@ -1,6 +1,6 @@
 # Fitness-tracker
 
-Fitness-tracker is a web application that allows users to look at recipes and create their own recipes. They can also add their body measurements in order to creeate a diet!
+Fitness-tracker is a web application that allows users to look at recipes and create their own ones. They can also add their body measurements in order to create a diet!
 
 ## Table of Contents
 1. Introduction
