@@ -15,7 +15,7 @@ Fitness-tracker is a web application that allows users to look at recipes and cr
   
 ## Introduction
 Fitness-tracker is a web application built on the MVC (Model-View-Controller) architecture.
-The platform allows users to look at recipes and create their own recipes. They can also add their body measurements in order to creeate a diet!.
+The platform allows users to look at recipes and create their own ones. They can also add their body measurements in order to creeate a diet!
 
 
 ## Getting Started
@@ -74,7 +74,7 @@ Fitness-tracker is designed to make dieting easy and efficient. The application 
 
 
 ## Project Structure:
-1. Fitness-Tracker (It contains everything needed for starting the website and using it)
+1. Fitness-Tracker (It contains everything needed for using the website)
 
 
 ## Contributing
