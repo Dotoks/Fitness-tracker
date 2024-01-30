@@ -1,18 +1,98 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 9 january\\Fitness-tracker\\",
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 9 january\\fitness-tracker\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\services\\recipesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:services\\recipesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 9 january\\fitness-tracker\\views\\recipes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\recipes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\viewmodels\\recipes\\createrecipeinputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:viewmodels\\recipes\\createrecipeinputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 9 january\\fitness-tracker\\controllers\\recipesscrapercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:controllers\\recipesscrapercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\models\\instructionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:models\\instructionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\models\\recipemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:models\\recipemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\services\\irecipesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:services\\irecipesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\body\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\body\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\controllers\\bodycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:controllers\\bodycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\shared\\errormacros.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\shared\\errormacros.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\models\\bodymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:models\\bodymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\account\\account.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\account\\account.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\about\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\about\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\views\\search\\search.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:views\\search\\search.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\migrations\\20240122140332_gendermigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:migrations\\20240122140332_gendermigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\migrations\\20240122134945_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:migrations\\20240122134945_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Migrations\\20240122134227_InitialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240122134227_InitialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|c:\\users\\user\\desktop\\all my projects\\fitness tracker 22 january\\fitness-tracker\\models\\dailymacrosmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{886B633F-8D30-451E-ADE7-09F8FCA4A2F4}|Fitness-Tracker.csproj|solutionrelative:models\\dailymacrosmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +102,302 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RecipesScraperController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 9 january\\Fitness-tracker\\Controllers\\RecipesScraperController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RecipesScraperController.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 9 january\\Fitness-tracker\\Controllers\\RecipesScraperController.cs",
-              "RelativeToolTip": "Controllers\\RecipesScraperController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAOsAAAAEAAAA",
+              "DocumentIndex": 4,
+              "Title": "InstructionModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\InstructionModel.cs",
+              "RelativeDocumentMoniker": "Models\\InstructionModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\InstructionModel.cs",
+              "RelativeToolTip": "Models\\InstructionModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-09T13:51:03.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 9 january\\Fitness-tracker\\Views\\Recipes\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Recipes\\Index.cshtml",
-              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 9 january\\Fitness-tracker\\Views\\Recipes\\Index.cshtml",
-              "RelativeToolTip": "Views\\Recipes\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-01-09T13:42:46.652Z",
+              "WhenOpened": "2024-01-30T21:12:34.135Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RecipesController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 9 january\\Fitness-tracker\\Controllers\\RecipesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RecipesController.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 9 january\\Fitness-tracker\\Controllers\\RecipesController.cs",
-              "RelativeToolTip": "Controllers\\RecipesController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAgwC0AAAASAAAA",
+              "Title": "RecipesService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Services\\RecipesService.cs",
+              "RelativeDocumentMoniker": "Services\\RecipesService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Services\\RecipesService.cs",
+              "RelativeToolTip": "Services\\RecipesService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-14T21:11:11.673Z",
+              "WhenOpened": "2024-01-30T21:09:47.447Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreateRecipeInputModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\ViewModels\\Recipes\\CreateRecipeInputModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Recipes\\CreateRecipeInputModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\ViewModels\\Recipes\\CreateRecipeInputModel.cs",
+              "RelativeToolTip": "ViewModels\\Recipes\\CreateRecipeInputModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-30T21:09:09.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RecipesController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Controllers\\RecipesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RecipesController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Controllers\\RecipesController.cs",
+              "RelativeToolTip": "Controllers\\RecipesController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAYwB4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-30T21:08:46.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-30T21:03:24.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ErrorMacros.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Shared\\ErrorMacros.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\ErrorMacros.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Shared\\ErrorMacros.cshtml",
+              "RelativeToolTip": "Views\\Shared\\ErrorMacros.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-01-30T21:00:42.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-30T20:59:59.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RecipeModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\RecipeModel.cs",
+              "RelativeDocumentMoniker": "Models\\RecipeModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\RecipeModel.cs",
+              "RelativeToolTip": "Models\\RecipeModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T14:02:27.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IRecipesService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Services\\IRecipesService.cs",
+              "RelativeDocumentMoniker": "Services\\IRecipesService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Services\\IRecipesService.cs",
+              "RelativeToolTip": "Services\\IRecipesService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-30T21:09:35.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Error.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-01-30T20:55:54.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Body\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Body\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Body\\Index.cshtml",
+              "RelativeToolTip": "Views\\Body\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-01-30T20:52:50.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BodyController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Controllers\\BodyController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BodyController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Controllers\\BodyController.cs",
+              "RelativeToolTip": "Controllers\\BodyController.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAIwEAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-30T20:52:13.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-01-30T20:52:00.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Account\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Create.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Account\\Create.cshtml",
+              "RelativeToolTip": "Views\\Account\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-01-30T20:40:33.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "account.html",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Account\\account.html",
+              "RelativeDocumentMoniker": "Views\\Account\\account.html",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Account\\account.html",
+              "RelativeToolTip": "Views\\Account\\account.html",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-01-30T20:40:25.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "about.html",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\About\\about.html",
+              "RelativeDocumentMoniker": "Views\\About\\about.html",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\About\\about.html",
+              "RelativeToolTip": "Views\\About\\about.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-01-30T20:40:19.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "search.html",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Search\\search.html",
+              "RelativeDocumentMoniker": "Views\\Search\\search.html",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Views\\Search\\search.html",
+              "RelativeToolTip": "Views\\Search\\search.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-01-30T20:40:10.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20240122140332_GenderMigration.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Migrations\\20240122140332_GenderMigration.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240122140332_GenderMigration.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Migrations\\20240122140332_GenderMigration.cs",
+              "RelativeToolTip": "Migrations\\20240122140332_GenderMigration.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T14:03:33.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BodyModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\BodyModel.cs",
+              "RelativeDocumentMoniker": "Models\\BodyModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\BodyModel.cs",
+              "RelativeToolTip": "Models\\BodyModel.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAswB0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T14:02:30.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20240122134945_InitialMigration.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Migrations\\20240122134945_InitialMigration.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240122134945_InitialMigration.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Migrations\\20240122134945_InitialMigration.cs",
+              "RelativeToolTip": "Migrations\\20240122134945_InitialMigration.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAgwEAAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T13:49:47.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-01-22T13:39:38.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20240122134227_InitialMigration.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Migrations\\20240122134227_InitialMigration.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240122134227_InitialMigration.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Migrations\\20240122134227_InitialMigration.cs",
+              "RelativeToolTip": "Migrations\\20240122134227_InitialMigration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T13:42:27.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DailyMacrosModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\DailyMacrosModel.cs",
+              "RelativeDocumentMoniker": "Models\\DailyMacrosModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\All my projects\\Fitness tracker 22 january\\Fitness-tracker\\Models\\DailyMacrosModel.cs",
+              "RelativeToolTip": "Models\\DailyMacrosModel.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T13:36:07.172Z"
             }
           ]
         }

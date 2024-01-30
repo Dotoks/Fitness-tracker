@@ -19,17 +19,28 @@ namespace Fitness_Tracker.Services
 
         public async Task CreateAsync(CreateRecipeInputModel input, string userId)
         {
+            var instructions = new Instruction
+            {
+                InstructionName = input.PreparationInstructions
+            };
             var recipe = new Recipe
             {
                 RecipeName = input.RecipeName,
-                Description = input.Description,
-             //   PreparationInstructions = input.PreparationInstructions,
+                Description = input.Description, 
+              
                 CookingTime = input.CookingTime,
                 Servings = input.Servings,
                 DifficultyLevel = input.DifficultyLevel,
                 CreatedDate = DateTime.Now,
-                CreatedBy = userId
+                CreatedBy = userId,
+                Calories = input.Calories,
+                Proteins = input.Proteins,
+                Carbohydrates = input.Carbohydrates,
+                Fats = input.Fats
+                
             };
+            recipe.PreparationInstructions = new List<Instruction>();
+            recipe.PreparationInstructions.Add(instructions);
             
             await _context.AddAsync(recipe);
             await _context.SaveChangesAsync();

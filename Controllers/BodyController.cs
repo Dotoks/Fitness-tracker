@@ -2,6 +2,7 @@
 using Fitness_Tracker.Services;
 using Fitness_Tracker.ViewModels.Body;
 using Fitness_Tracker.ViewModels.Recipes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -59,7 +60,7 @@ namespace Fitness_Tracker.Controllers
             else
             {
                 // Handle the case where userBody or userBody.DailyMacros is null
-                return View("Error"); // You can customize the error view
+                return View("ErrorMacros"); // You can customize the error view
             }
         }
 
@@ -80,6 +81,7 @@ namespace Fitness_Tracker.Controllers
         // POST: BodyController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> CreateAsync(CreateBodyInputModel input)
         {
             var user = await userManager.GetUserAsync(this.User);

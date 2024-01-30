@@ -107,7 +107,8 @@ namespace Fitness_Tracker.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BodyId");
+                    b.HasIndex("BodyId")
+                        .IsUnique();
 
                     b.ToTable("DailyMacros");
                 });
@@ -473,8 +474,8 @@ namespace Fitness_Tracker.Migrations
             modelBuilder.Entity("Fitness_Tracker.Models.DailyMacros", b =>
                 {
                     b.HasOne("Fitness_Tracker.Models.Body", "Body")
-                        .WithMany()
-                        .HasForeignKey("BodyId")
+                        .WithOne("DailyMacros")
+                        .HasForeignKey("Fitness_Tracker.Models.DailyMacros", "BodyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -570,6 +571,12 @@ namespace Fitness_Tracker.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Fitness_Tracker.Models.Body", b =>
+                {
+                    b.Navigation("DailyMacros")
                         .IsRequired();
                 });
 
