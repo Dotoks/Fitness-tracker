@@ -38,16 +38,16 @@ namespace Fitness_Tracker.Controllers
             {
                 var scraperController = new RecipesScraperController(_unitOfWork, _recipeRepository, userManager, _userRepository);
                // await scraperController.ScrapeData();
-                IEnumerable<Recipe> recipes;
-                TimeRange? cookingTimeFilter = new TimeRange // Make Default values  00:00 and 23:59
+               
+                TimeRange? cookingTimeFilter = new TimeRange
                 {
-                    MinHours = minHours,
-                    MinMinutes = minMinutes,
-                    MaxHours = maxHours,
-                    MaxMinutes = maxMinutes
+                    MinHours = minHours ?? 0, // Provide default values if null
+                    MinMinutes = minMinutes ?? 0,
+                    MaxHours = maxHours ?? 23,
+                    MaxMinutes = maxMinutes ?? 59
                 };
 
-                recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter).ToList();
+                var recipes = _recipeRepository.Filter(ingredientsFilter, cookingTimeFilter, recipeNameFilter, caloriesMinFilter, caloriesMaxFilter, carbsFilter, proteinFilter, fatsFilter);//.ToList()
 
 
 
@@ -147,6 +147,7 @@ namespace Fitness_Tracker.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AddToDailyMacros(int recipeId)
         {
             // Get the selected recipe based on the provided recipeId
